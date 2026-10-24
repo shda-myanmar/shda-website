@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Harmony Development Association (SHDA) - Partner Portal</title>
+    <title>Social Harmony Development Association (SHDA) - Official Portal & Emergency Appeal</title>
     <link href="https://fonts.googleapis.com/css2?family=Pyidaungsu:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #1a5276;
             --secondary-color: #2980b9;
             --accent-color: #27ae60;
+            --warning-color: #c0392b;
             --dark-bg: #2c3e50;
             --light-bg: #f8f9fa;
         }
@@ -24,7 +25,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 50px 20px;
+            padding: 45px 20px;
             text-align: center;
         }
         header h1 {
@@ -47,9 +48,14 @@
         .nav-bar a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
             font-weight: 600;
             font-size: 13px;
+        }
+        .nav-bar a.donate-link {
+            background-color: var(--warning-color);
+            padding: 6px 14px;
+            border-radius: 4px;
         }
         .container {
             max-width: 1000px;
@@ -70,6 +76,9 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             border-top: 4px solid var(--secondary-color);
         }
+        .stat-card.urgent {
+            border-top-color: var(--warning-color);
+        }
         .stat-card h3 {
             margin: 0;
             color: var(--primary-color);
@@ -87,12 +96,19 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
+        .card.appeal-card {
+            border-left: 6px solid var(--warning-color);
+            background: #fffdfd;
+        }
         h2 {
             color: var(--primary-color);
             border-bottom: 2px solid #eaeaea;
             padding-bottom: 10px;
             margin-top: 0;
             font-size: 19px;
+        }
+        .appeal-title {
+            color: var(--warning-color);
         }
         .lang-eng {
             color: #2c3e50;
@@ -128,6 +144,86 @@
             font-size: 13px;
             margin-bottom: 0;
         }
+        /* Donation Form Styles */
+        .donation-box {
+            background: #fdfefe;
+            border: 1px solid #d6eaf8;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .currency-selector-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            background-color: #f0f4f8;
+            padding: 5px;
+            border-radius: 6px;
+        }
+        .currency-tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: var(--primary-color);
+            transition: background 0.2s, color 0.2s;
+        }
+        .currency-tab.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .amount-btn {
+            padding: 12px 8px;
+            background: #ebf5fb;
+            border: 1px solid var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .amount-btn:hover, .amount-btn.active {
+            background: var(--secondary-color);
+            color: white;
+        }
+        .impact-badge {
+            display: block;
+            font-size: 11px;
+            font-weight: normal;
+            margin-top: 4px;
+            opacity: 0.9;
+        }
         .contact-box {
             background: #e8f8f5;
             padding: 25px;
@@ -143,6 +239,15 @@
             border-radius: 5px;
             font-weight: bold;
             margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+        .cta-btn.donate-btn {
+            background: var(--warning-color);
         }
         footer {
             text-align: center;
@@ -158,11 +263,12 @@
 
     <header>
         <h1>Social Harmony Development Association (SHDA)</h1>
-        <p>လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေး အသင်း | Rakhine State, Myanmar</p>
+        <p>လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း | Rakhine State, Myanmar</p>
         <p><em>Communities Empowering, Changing Lives</em></p>
     </header>
 
     <div class="nav-bar">
+        <a href="#appeal" class="donate-link">Donate / အလှူငွေထည့်ဝင်ရန်</a>
         <a href="#about">About / နောက်ခံသမိုင်း</a>
         <a href="#capabilities">Capabilities / လုပ်ငန်းအတွေ့အကြုံ</a>
         <a href="#governance">Governance / မူဝါဒများ</a>
@@ -173,21 +279,83 @@
         
         <!-- Impact Stats -->
         <div class="stats-grid">
-            <div class="stat-card">
-                <h3>Rakhine State</h3>
-                <p>Township-wide Humanitarian Coverage</p>
+            <div class="stat-card urgent">
+                <h3>90% Population</h3>
+                <p>Severely Conflict-Impacted in Rakhine</p>
             </div>
             <div class="stat-card">
-                <h3>UN, INGO & Donors</h3>
-                <p>Collaborative Partnerships</p>
+                <h3>Townships Served</h3>
+                <p>Buthidaung, Mrauk-U, Ponnagyun, Maungdaw, Rathedaung</p>
             </div>
             <div class="stat-card">
                 <h3>10 Policies</h3>
                 <p>International Standard Compliance</p>
             </div>
             <div class="stat-card">
-                <h3>Emergency & WASH</h3>
-                <p>MPCA Grants, Food Relief & WASH</p>
+                <h3>UN & INGO Partners</h3>
+                <p>REACH, ACTED, UNHCR, GIZ, RRF & Inspire Asia</p>
+            </div>
+        </div>
+
+        <!-- Emergency Appeal Section -->
+        <div class="card appeal-card" id="appeal">
+            <h2 class="appeal-title">Urgent Humanitarian Appeal: Crisis in Rakhine State (အရေးပေါ် အလှူငွေ နှိုးဆော်ချက်)</h2>
+            <div class="lang-eng">
+                Due to escalating armed conflict in Rakhine State, displacement (IDPs) is rapidly rising daily. Host communities are similarly facing extreme hardship with no jobs, total loss of income, and sky-rocketing inflation—leading to severe acute food insecurity. Lack of capital has completely disrupted key sectors: Livestock, Agriculture, WASH, Health, Education, and Local Commerce. Nearly 90% of the population is directly affected.
+            </div>
+            <div class="lang-my">
+                ရခိုင်ပြည်နယ်အတွင်း ဖြစ်ပွားနေသော စစ်ရေးပဋိပက္ခများကြောင့် စစ်ဘေးရှောင် (IDP) ဦးရေ နေ့စဉ်နှင့်အမျှ တိုးပွားလျက်ရှိပြီး၊ ဒေသခံပြည်သူ (Host Communities) များလည်း အလုပ်အကိုင်မရှိ၊ ဝင်ငွေမရှိခြင်းနှင့် ကုန်ဈေးနှုန်း အဆမတန်မြင့်တက်မှုများကြောင့် အငတ်ဘေးဖြင့် ရင်ဆိုင်ကြုံတွေ့နေရပါသည်။ အရင်းအနှီး မရှိတော့သည့်အတွက် မွေးမြူရေး၊ WASH၊ စိုက်ပျိုးရေး၊ ပညာရေး၊ ကျန်းမာရေးနှင့် ကုန်သွယ်စီးပွားရေး လုပ်ငန်းများ လုံးဝ ပြတ်တောက်နေပြီး ပြည်သူ ၉၀% နီးပါး ထိခိုက်ခံနေရပါသည်။
+            </div>
+
+            <!-- Online Multi-Currency Donation Gateway Box -->
+            <div class="donation-box">
+                <h3 style="margin-top: 0; color: var(--primary-color);">🔒 Secure Multi-Currency Online Donation Portal (လုံခြုံစိတ်ချရသော အလှူငွေထည့်ဝင်ရန်စနစ်)</h3>
+                <p style="font-size: 13px; color: #666;">
+                    Supporting <strong>MMK (Myanmar Kyat)</strong>, <strong>USD ($)</strong>, and <strong>EUR (€)</strong>. Donations are processed securely without public exposure of sensitive banking details.
+                </p>
+                
+                <form id="donationForm" onsubmit="handleDonationSubmit(event)">
+                    <!-- Currency Selector -->
+                    <div class="form-group">
+                        <label>Select Donation Currency (လှူဒါန်းလိုသည့် ငွေကြေးအမျိုးအစား ရွေးချယ်ပါ):</label>
+                        <div class="currency-selector-tabs">
+                            <button type="button" class="currency-tab active" onclick="switchCurrency('MMK')">MMK (ကျပ်)</button>
+                            <button type="button" class="currency-tab" onclick="switchCurrency('USD')">USD ($)</button>
+                            <button type="button" class="currency-tab" onclick="switchCurrency('EUR')">EUR (€)</button>
+                        </div>
+                    </div>
+
+                    <!-- Preset Amounts Container -->
+                    <div class="form-group">
+                        <label id="amountLabel">Select Contribution Amount (MMK / မြန်မာကျပ်):</label>
+                        <div class="donation-amounts" id="amountsContainer">
+                            <!-- Populated dynamically by JavaScript -->
+                        </div>
+                        <input type="number" id="customAmount" placeholder="Enter Custom Amount" style="margin-top: 8px;" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Donor Name / Organization (အလှူရှင်အမည် / အဖွဲ့အစည်း):</label>
+                        <input type="text" placeholder="Full Name or Anonymous" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address (အီးမေးလ် - ပြေစာပေးပို့ရန်):</label>
+                        <input type="email" placeholder="email@domain.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Target Sector (ထောက်ပံ့လိုသည့် ကဏ္ဍ):</label>
+                        <select>
+                            <option>Emergency Food & MPCA Grants (အဓိက အရေးပေါ်ရိက္ခာနှင့် ငွေကြေး)</option>
+                            <option>WASH & Clean Water (သောက်သုံးရေနှင့် ရေပေးဝေရေး)</option>
+                            <option>Livelihood & Livestock Support (မွေးမြူရေးနှင့် အသက်မွေးဝမ်းကျောင်း)</option>
+                            <option>General Emergency Fund (အထွေထွေ အရေးပေါ် ရန်ပုံငွေ)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="cta-btn donate-btn" id="donateSubmitBtn">DONATE NOW IN MMK (အလှူငွေ လှူဒါန်းမည်)</button>
+                </form>
             </div>
         </div>
 
@@ -198,29 +366,29 @@
                 Social Harmony Development Association (SHDA) is a Rakhine State-based, non-profit, independent Local Non-Governmental Organization (LNGO) established in January 2026 (transitioned from active humanitarian programming since June 2023). Built on principles of justice, neutrality, and non-discrimination, SHDA operates as a multi-ethnic and multi-religious humanitarian body dedicated to serving all vulnerable communities in partnership with UN agencies, INGOs, and international/local donors.
             </div>
             <div class="lang-my">
-                လူမှုသဟဇာတဖွံ့ဖြိုးရေးအသင်း (SHDA) သည် ရခိုင်ပြည်နယ်အခြေစိုက် အကျိုးအမြတ်မယူသော၊ လွတ်လပ်သော အစိုးရမဟုတ်သောဒေသခံအဖွဲ့အစည်း (LNGO) တစ်ခုဖြစ်ပြီး ၂၀၂၆ ခုနှစ်၊ ဇန်နဝါရီလတွင် တရားဝင် စတင်တည်ထောင်ခဲ့ပါသည်။ (ယခင် ၂၀၂၃ ဇွန်လမှစတင်၍ လူသားချင်းစာနာမှုလုပ်ငန်းများကို လုပ်ဆောင်ခဲ့ရာမှ အသွင်ပြောင်းလဲခဲ့ခြင်း ဖြစ်ပါသည်။) တရားမျှတမှု၊ ဘက်လိုက်မှုကင်းစင်မှုနှင့် ခွဲခြားဆက်ဆံမှုမရှိခြင်း စသည့်အခြေခံမူများဖြင့် ကုလသမဂ္ဂအေဂျင်စီများ၊ နိုင်ငံတကာအစိုးရမဟုတ်သော အဖွဲ့အစည်းများ (INGOs) နှင့် အလှူရှင်များနှင့် ပူးပေါင်း၍ လူသားချင်းစာနာမှုလုပ်ငန်းများကို ဆောင်ရွက်လျက်ရှိပါသည်။
+                လူမှုသဟဇာတဖွံ့ဖြိုးရေးအသင်း (SHDA) သည် ရခိုင်ပြည်နယ်အခြေစိုက် အကျိုးအမြတ်မယူသော၊ လွတ်လပ်သော အစိုးရမဟုတ်သောဒေသခံအဖွဲ့အစည်း (LNGO) တစ်ခုဖြစ်ပြီး၂၀၂၆ ခုနှစ်၊ ဇန်နဝါရီလတွင် တရားဝင် စတင်တည်ထောင်ခဲ့ပါသည်။ (ယခင် ၂၀၂၃ ဇွန်လမှစတင်၍ လူသားချင်းစာနာမှုလုပ်ငန်းများကိုလုပ်ဆောင်ခဲ့ရာမှ အသွင်ပြောင်းလဲခဲ့ခြင်း ဖြစ်ပါသည်။) တရားမျှတမှု၊ ဘက်လိုက်မှုကင်းစင်မှုနှင့်ခွဲခြားဆက်ဆံမှုမရှိခြင်းစသည့်အခြေခံမူများဖြင့်ကုလသမဂ္ဂအေဂျင်စီများ၊နိုင်ငံတကာအစိုးရမဟုတ်သောအဖွဲ့အစည်းများ (INGOs) နှင့် အလှူရှင်များနှင့် ပူးပေါင်း၍ လူသားချင်းစာနာမှုလုပ်ငန်းများကိုဆောင်ရွက်လျက်ရှိပါသည်။
             </div>
         </div>
 
         <!-- Capabilities & Experience -->
         <div class="card" id="capabilities">
-            <h2>Core Sectors & Experience (အဓိကလုပ်ဆောင်မည့် ကဏ္ဍများနှင့် အတွေ့အကြုံ)</h2>
+            <h2>Core Sectors & Experience (အဓိကလုပ်ဆောင်မည့်ကဏ္ဍများနှင့် အတွေ့အကြုံ)</h2>
             <ul>
                 <li>
                     <div class="lang-eng"><strong>Humanitarian Emergency Response & MPCA:</strong> Delivering swift relief, Multi-Purpose Cash Assistance (MPCA), and emergency food/rice distributions to conflict-affected and flood-affected households in Rakhine State in collaboration with international and local donors.</div>
-                    <div class="lang-my">အလှူရှင်များ၏ ရန်ပုံငွေပံ့ပိုးမှုဖြင့် ပဋိပက္ခနှင့် သဘာဝဘေးဒဏ်သင့်ပြည်သူများထံ အရေးပေါ် MPCA ငွေကြေးထောက်ပံ့ခြင်းနှင့် ဆန်ရိက္ခာများ ဖြန့်ဝေခြင်း။</div>
+                    <div class="lang-my">အလှူရှင်များ၏ရန်ပုံငွေပံ့ပိုးမှုဖြင့်ပဋိပက္ခနှင့် သဘာဝဘေးဒဏ်သင့်ပြည်သူများထံအရေးပေါ် MPCA ငွေကြေးထောက်ပံ့ခြင်းနှင့် ဆန်ရိက္ခာများ ဖြန့်ဝေခြင်း။</div>
                 </li>
                 <li>
                     <div class="lang-eng"><strong>Assessments & Data Collection (KoBoToolbox):</strong> Certified primary data collection partner for UN agencies and international humanitarian organizations conducting MSNA, LEONA, JMMI, and RMS assessments across Northern Rakhine.</div>
-                    <div class="lang-my">ကုလသမဂ္ဂအေဂျင်စီများနှင့် နိုင်ငံတကာအဖွဲ့အစည်းများအတွက် KoBoToolbox ကို အသုံးပြုကာ MSNA, LEONA, JMMI နှင့် RMS စစ်တမ်းများကို ကျွမ်းကျင်စွာ ကောက်ယူခြင်း။</div>
+                    <div class="lang-my">ကုလသမဂ္ဂအေဂျင်စီများနှင့်နိုင်ငံတကာအဖွဲ့အစည်းများအတွက် KoBoToolbox ကို အသုံးပြုကာ MSNA, LEONA, JMMI နှင့် RMS စစ်တမ်းများကို ကျွမ်းကျင်စွာ ကောက်ယူခြင်း။</div>
                 </li>
                 <li>
                     <div class="lang-eng"><strong>Livelihoods & Agriculture:</strong> Implementing livelihood grants (livestock, poultry, pigs, cows, goats, agricultural seeds) and vocational skill trainings funded by international development partners.</div>
-                    <div class="lang-my">နိုင်ငံတကာ မိတ်ဖက်အဖွဲ့အစည်းများ၏ ပံ့ပိုးမှုဖြင့် တိရစ္ဆာန်မွေးမြူရေး (ဆိတ်၊ ကြက်၊ ဝက်၊ နွား)၊ မျိုးစေ့နှင့် အသက်မွေးဝမ်းကျောင်း ထောက်ပံ့မှုများ ပြုလုပ်ခြင်း။</div>
+                    <div class="lang-my">နိုင်ငံတကာမိတ်ဖက်အဖွဲ့အစည်းများ၏ပံ့ပိုးမှုဖြင့် တိရစ္ဆာန်မွေးမြူရေး (ဆိတ်၊ ကြက်၊ ဝက်၊ နွား)၊ မျိုးစေ့နှင့် အသက်မွေးဝမ်းကျောင်းထောက်ပံ့မှုများ ပြုလုပ်ခြင်း။</div>
                 </li>
                 <li>
                     <div class="lang-eng"><strong>WASH & Community Infrastructure:</strong> Constructing and rehabilitating community ponds, water supply systems, footbridges, and school fencing.</div>
-                    <div class="lang-my">ရေကန်၊ ရေပေးဝေရေးစနစ်၊ တံတားနှင့် ကျောင်းစည်းရိုးများ တည်ဆောက်ပြုပြင်ခြင်း။</div>
+                    <div class="lang-my">ရေကန်၊ရေပေးဝေရေးစနစ်၊ တံတားနှင့် ကျောင်းစည်းရိုးများ တည်ဆောက်ပြုပြင်ခြင်း။</div>
                 </li>
             </ul>
         </div>
@@ -229,7 +397,7 @@
         <div class="card" id="governance">
             <h2>Institutional Governance & Policies (အဖွဲ့အစည်းဆိုင်ရာ မူဝါဒများ)</h2>
             <div class="lang-eng">SHDA maintains strict adherence to international humanitarian standards and transparency through 10 core institutional policies:</div>
-            <div class="lang-my">SHDA တွင် နိုင်ငံတကာစံနှုန်းများနှင့်အညီ တာဝန်ယူမှု၊ တာဝန်ခံမှု အပြည့်အဝရှိစေရန် အောက်ပါမူဝါဒ (၁၀) မျိုးကို တင်းကျပ်စွာ ကျင့်သုံးလျက်ရှိပါသည် -</div>
+            <div class="lang-my">SHDA တွင်နိုင်ငံတကာစံနှုန်းများနှင့်အညီတာဝန်ယူမှု၊ တာဝန်ခံမှု အပြည့်အဝရှိစေရန် အောက်ပါမူဝါဒ (၁၀) မျိုးကို တင်းကျပ်စွာ ကျင့်သုံးလျက်ရှိပါသည် -</div>
             <br>
             <ul class="policy-list">
                 <li>✓ HR & Personnel Policy (လူ့စွမ်းအားအရင်းအမြစ် မူဝါဒ)</li>
@@ -237,24 +405,24 @@
                 <li>✓ Anti-Fraud Policy (အဂတိလိုက်စားမှု တိုက်ဖျက်ရေး မူဝါဒ)</li>
                 <li>✓ Procurement Policy (ပစ္စည်းဝယ်ယူမှု မူဝါဒ)</li>
                 <li>✓ PSEA Policy (လိင်ပိုင်းဆိုင်ရာ အလွဲသုံးစားပြုမှု ကာကွယ်ရေး)</li>
-                <li>✓ Safeguarding & Child Protection Policy (ကလေးသူငယ် ကာကွယ်စောင့်ရှောက်ရေး)</li>
-                <li>✓ Security Policy & Code of Conduct (လုံခြုံရေးနှင့် ဝန်ထမ်းကျင့်ဝတ်)</li>
+                <li>✓ Safeguarding & Child Protection Policy (ကလေးသူငယ်ကာကွယ်စောင့်ရှောက်ရေး)</li>
+                <li>✓ Security Policy & Code of Conduct (လုံခြုံရေးနှင့်ဝန်ထမ်းကျင့်ဝတ်)</li>
                 <li>✓ M&E Policy - KoBo System (စောင့်ကြည့်စစ်ဆေးရေး မူဝါဒ)</li>
                 <li>✓ Conflict of Interest Policy (အကျိုးစီးပွား ပဋိပက္ခဆိုင်ရာ မူဝါဒ)</li>
-                <li>✓ Crisis Communication & Phone Tree (အရေးပေါ် ဆက်သွယ်ရေး မူဝါဒ)</li>
+                <li>✓ Crisis Communication & Phone Tree (အရေးပေါ်ဆက်သွယ်ရေး မူဝါဒ)</li>
             </ul>
         </div>
 
         <!-- Partnership Section -->
         <div class="card" id="partner">
-            <h2>Partner With SHDA (မိတ်ဖက်ပြု ပူးပေါင်းဆောင်ရွက်ရန်)</h2>
+            <h2>Partner With SHDA (မိတ်ဖက်ပြုပူးပေါင်းဆောင်ရွက်ရန်)</h2>
             <div class="contact-box">
                 <h3>Direct Partnership & Grant Proposals</h3>
                 <div class="lang-eng">SHDA is actively seeking partnerships with UN agencies, INGOs, and International Donors for direct funding, sub-grants, and joint emergency implementation in Northern Rakhine State.</div>
-                <div class="lang-my">SHDA အနေဖြင့် UN အေဂျင်စီများ၊ INGO များနှင့် အပြည်ပြည်ဆိုင်ရာ အလှူရှင်များနှင့်အတူ ရခိုင်ပြည်နယ်အတွင်း လူသားချင်းစာနာမှုနှင့် ဖွံ့ဖြိုးရေးစီမံကိန်းများကို ပူးပေါင်းအကောင်အထည်ဖော်ရန် အမြဲအသင့်ရှိနေပါသည်။</div>
+                <div class="lang-my">SHDA အနေဖြင့် UN အေဂျင်စီများ၊ INGO များနှင့် အပြည်ပြည်ဆိုင်ရာ အလှူရှင်များနှင့်အတူ ရခိုင်ပြည်နယ်အတွင်း လူသားချင်းစာနာမှုနှင့် ဖွံ့ဖြိုးရေးစီမံကိန်းများကိုပူးပေါင်းအကောင်အထည်ဖော်ရန်အမြဲအသင့်ရှိနေပါသည်။</div>
                 <br>
                 <p><strong>Primary Contact / တာဝန်ခံ:</strong> Shwe Thar Sein (Program Manager / President)</p>
-                <p><strong>Official Email / အီးမေးလ်:</strong> shwetharsein.shda@gmail.com</p>
+                <p><strong>Official Email / အီးမေးလ်:</strong> shwetharsein.shda@gmail.com / hrdepartment.shda@gmail.com</p>
                 <p><strong>Operational Location / တည်နေရာ:</strong> Buthidaung Township, Rakhine State, Myanmar</p>
                 <a href="mailto:shwetharsein.shda@gmail.com?subject=Partnership%20Inquiry%20-%20SHDA" class="cta-btn">Contact for Partnership Proposal / ပူးပေါင်းဆောင်ရွက်ရန် ဆက်သွယ်မည်</a>
             </div>
@@ -266,5 +434,91 @@
         <p>&copy; 2026 Social Harmony Development Association (SHDA). All Rights Reserved.</p>
     </footer>
 
+    <script>
+        const currencyData = {
+            MMK: {
+                label: "Select Contribution Amount (MMK / မြန်မာကျပ်):",
+                btnText: "DONATE NOW IN MMK (အလှူငွေ လှူဒါန်းမည်)",
+                presets: [
+                    { amount: 50000, display: "50,000 Ks", impact: "1 Family Food Ration" },
+                    { amount: 100000, display: "100,000 Ks", impact: "2 Families Rice & Oil Kit" },
+                    { amount: 300000, display: "300,000 Ks", impact: "1 HH Emergency MPCA Grant" },
+                    { amount: 500000, display: "500,000 Ks", impact: "WASH & Clean Water Kit" }
+                ],
+                defaultVal: 100000
+            },
+            USD: {
+                label: "Select Contribution Amount (USD / အမေရိကန်ဒေါ်လာ):",
+                btnText: "DONATE NOW IN USD ($)",
+                presets: [
+                    { amount: 25, display: "$25 USD", impact: "1 Emergency Hygiene Kit" },
+                    { amount: 50, display: "$50 USD", impact: "1 Household Food Basket" },
+                    { amount: 100, display: "$100 USD", impact: "1 HH Direct Cash Grant (MPCA)" },
+                    { amount: 250, display: "$250 USD", impact: "Community Water & WASH Relief" }
+                ],
+                defaultVal: 50
+            },
+            EUR: {
+                label: "Select Contribution Amount (EUR / ယူရို):",
+                btnText: "DONATE NOW IN EUR (€)",
+                presets: [
+                    { amount: 25, display: "€25 EUR", impact: "1 Emergency Relief Pack" },
+                    { amount: 50, display: "€50 EUR", impact: "1 Household Food Basket" },
+                    { amount: 100, display: "€100 EUR", impact: "1 HH Direct Cash Grant (MPCA)" },
+                    { amount: 250, display: "€250 EUR", impact: "Community Water & WASH Support" }
+                ],
+                defaultVal: 50
+            }
+        };
+
+        let currentCurrency = 'MMK';
+
+        function renderAmounts() {
+            const data = currencyData[currentCurrency];
+            document.getElementById('amountLabel').innerText = data.label;
+            document.getElementById('donateSubmitBtn').innerText = data.btnText;
+            
+            const container = document.getElementById('amountsContainer');
+            container.innerHTML = '';
+
+            data.presets.forEach((item, index) => {
+                const btn = document.createElement('div');
+                btn.className = `amount-btn ${item.amount === data.defaultVal ? 'active' : ''}`;
+                btn.onclick = () => setAmount(item.amount, btn);
+                btn.innerHTML = `${item.display}<span class="impact-badge">${item.impact}</span>`;
+                container.appendChild(btn);
+            });
+
+            document.getElementById('customAmount').value = data.defaultVal;
+        }
+
+        function switchCurrency(currency) {
+            currentCurrency = currency;
+            document.querySelectorAll('.currency-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if(tab.innerText.includes(currency)) tab.classList.add('active');
+            });
+            renderAmounts();
+        }
+
+        function setAmount(val, element) {
+            document.getElementById('customAmount').value = val;
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+            if(element) element.classList.add('active');
+        }
+
+        function handleDonationSubmit(event) {
+            event.preventDefault();
+            const amount = document.getElementById('customAmount').value;
+            alert(`Thank you for supporting SHDA!\nYour donation request of ${amount} ${currentCurrency} has been received. Our team will contact you with secure payment instructions.`);
+        }
+
+        // Initialize on page load
+        window.onload = function() {
+            renderAmounts();
+        };
+    </script>
+
 </body>
 </html>
+
