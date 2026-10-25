@@ -3,522 +3,1047 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Harmony Development Association (SHDA) - Official Portal & Emergency Appeal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pyidaungsu:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Social Harmony Development Association (SHDA) - Official Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pyidaungsu:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1a5276;
-            --secondary-color: #2980b9;
-            --accent-color: #27ae60;
-            --warning-color: #c0392b;
-            --dark-bg: #2c3e50;
+            --primary-blue: #1a5276;
+            --secondary-blue: #2980b9;
+            --accent-green: #27ae60;
+            --highlight-orange: #e67e22;
+            --dark-bg: #1c2833;
             --light-bg: #f8f9fa;
+            --card-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            --border-radius: 12px;
         }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', 'Pyidaungsu', Arial, sans-serif;
+            font-family: 'Inter', 'Pyidaungsu', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--light-bg);
-            color: #333;
+            color: #2c3e50;
             line-height: 1.6;
         }
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 45px 20px;
+
+        /* Top Bar */
+        .top-announcement {
+            background: #0f2a40;
+            color: #d5f5e3;
             text-align: center;
+            padding: 8px 15px;
+            font-size: 13px;
+            font-weight: 600;
         }
-        header h1 {
-            margin: 0 0 10px 0;
-            font-size: 26px;
+
+        /* Header Layout */
+        header {
+            background: white;
+            padding: 25px 20px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-blue);
         }
-        header p {
-            margin: 5px 0;
-            font-size: 15px;
-            opacity: 0.95;
+
+        .logo-container {
+            max-width: 650px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
+
+        /* SVG Official SHDA Logo */
+        .shda-svg-logo {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+        }
+
+        /* Navigation Bar */
         .nav-bar {
-            background: var(--dark-bg);
-            padding: 12px;
+            background: var(--primary-blue);
+            padding: 10px 15px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
         }
+
         .nav-bar a {
             color: white;
             text-decoration: none;
-            margin: 0 12px;
+            padding: 8px 14px;
             font-weight: 600;
             font-size: 13px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
-        .nav-bar a.donate-link {
-            background-color: var(--warning-color);
-            padding: 6px 14px;
-            border-radius: 4px;
+
+        .nav-bar a:hover, .nav-bar a.active {
+            background: rgba(255,255,255,0.2);
+            color: #f1c40f;
         }
+
         .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
+            max-width: 1100px;
+            margin: 25px auto;
+            padding: 0 15px;
         }
+
+        /* Impact Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin-bottom: 25px;
         }
+
         .stat-card {
             background: white;
             padding: 20px;
             text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--secondary-blue);
         }
-        .stat-card.urgent {
-            border-top-color: var(--warning-color);
-        }
+
         .stat-card h3 {
             margin: 0;
-            color: var(--primary-color);
+            color: var(--primary-blue);
             font-size: 20px;
+            font-weight: 700;
         }
+
         .stat-card p {
-            margin: 5px 0 0 0;
+            margin: 6px 0 0;
             font-size: 13px;
             color: #666;
         }
+
+        /* Card Section Styling */
         .card {
             background: white;
-            padding: 30px;
+            padding: 28px;
             margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            border: 1px solid #eaeaea;
         }
-        .card.appeal-card {
-            border-left: 6px solid var(--warning-color);
-            background: #fffdfd;
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #eaeaea;
+
+        h2.section-title {
+            color: var(--primary-blue);
+            border-bottom: 2px solid #eef2f5;
             padding-bottom: 10px;
             margin-top: 0;
-            font-size: 19px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .appeal-title {
-            color: var(--warning-color);
-        }
+
         .lang-eng {
             color: #2c3e50;
             font-size: 15px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
+
         .lang-my {
             color: #4a5568;
             font-size: 14px;
-            border-left: 3px solid var(--secondary-color);
-            padding-left: 12px;
-            margin-top: 6px;
-            margin-bottom: 15px;
+            border-left: 3px solid var(--secondary-blue);
+            padding-left: 14px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            line-height: 1.7;
         }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 15px;
-        }
-        .policy-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 10px;
-            padding: 0;
-            list-style: none;
-        }
-        .policy-list li {
-            background: #eef7fc;
-            padding: 10px 15px;
-            border-radius: 5px;
-            border-left: 4px solid var(--secondary-color);
-            font-size: 13px;
-            margin-bottom: 0;
-        }
-        /* Donation Form Styles */
-        .donation-box {
-            background: #fdfefe;
-            border: 1px solid #d6eaf8;
+
+        /* LIVE DONATION TRACKER BOARD */
+        .tracker-box {
+            background: linear-gradient(135deg, #0f2a40, #1a5276);
+            color: white;
             padding: 25px;
-            border-radius: 8px;
-            margin-top: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 13px;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-        .currency-selector-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-            background-color: #f0f4f8;
-            padding: 5px;
-            border-radius: 6px;
-        }
-        .currency-tab {
-            flex: 1;
-            padding: 10px;
+
+        .tracker-header {
             text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tracker-header h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #f1c40f;
+        }
+
+        .tracker-header p {
+            margin: 5px 0 0;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .currency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .currency-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .currency-card .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #aeb6bf;
+        }
+
+        .currency-card .amount {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2ecc71;
+            margin: 8px 0;
+        }
+
+        .currency-card .goal {
+            font-size: 12px;
+            color: #d5dbdb;
+        }
+
+        .progress-bar-container {
+            background: rgba(255,255,255,0.2);
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: #2ecc71;
+            height: 100%;
+            width: 65%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* DONATION GATEWAY INTERACTIVE FORM */
+        .donation-gateway {
+            background: #fcfcfc;
+            border: 2px solid #ebf5fb;
+            padding: 22px;
+            border-radius: var(--border-radius);
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: #eef2f5;
+            border: none;
+            border-radius: 8px;
             font-weight: bold;
             font-size: 14px;
-            border-radius: 4px;
             cursor: pointer;
-            background: transparent;
-            border: none;
-            color: var(--primary-color);
-            transition: background 0.2s, color 0.2s;
+            color: #555;
+            transition: all 0.2s;
         }
-        .currency-tab.active {
-            background: var(--primary-color);
+
+        .tab-btn.active {
+            background: var(--primary-blue);
             color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.3);
         }
-        .donation-amounts {
+
+        .amount-presets {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        .amount-btn {
-            padding: 12px 8px;
-            background: #ebf5fb;
-            border: 1px solid var(--secondary-color);
-            color: var(--primary-color);
-            border-radius: 6px;
-            font-weight: bold;
+
+        .preset-btn {
+            background: white;
+            border: 2px solid #d6dbdf;
+            padding: 12px;
+            border-radius: 8px;
             cursor: pointer;
             text-align: center;
+            font-weight: bold;
             font-size: 14px;
+            color: var(--primary-blue);
             transition: all 0.2s;
         }
-        .amount-btn:hover, .amount-btn.active {
-            background: var(--secondary-color);
-            color: white;
+
+        .preset-btn:hover, .preset-btn.selected {
+            border-color: var(--accent-green);
+            background: #eafaf1;
+            color: var(--accent-green);
         }
-        .impact-badge {
+
+        .preset-btn small {
             display: block;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: normal;
-            margin-top: 4px;
-            opacity: 0.9;
+            color: #666;
+            margin-top: 3px;
         }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .donate-submit-btn {
+            background: var(--accent-green);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+
+        .donate-submit-btn:hover {
+            background: #219150;
+        }
+
+        /* FACEBOOK ACTIVITIES GRID */
+        .fb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .fb-card {
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e1e8ed;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fb-card-header {
+            background: #f5f8fa;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        .fb-avatar {
+            width: 38px;
+            height: 38px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .fb-card-body {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        .fb-tag {
+            background: #eef7fc;
+            color: var(--secondary-blue);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .fb-card-footer {
+            padding: 12px 15px;
+            background: #fafbfc;
+            border-top: 1px solid #f0f0f0;
+            text-align: right;
+        }
+
+        .fb-link-btn {
+            color: #3b5998;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* POLICIES GRID */
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .policy-grid li {
+            background: #eef7fc;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary-blue);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* TRACK RECORD TABLE */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        th {
+            background: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* CONTACT BOX */
         .contact-box {
             background: #e8f8f5;
             padding: 25px;
-            border-left: 5px solid var(--accent-color);
-            border-radius: 6px;
+            border-left: 5px solid var(--accent-green);
+            border-radius: 8px;
         }
+
         .cta-btn {
             display: inline-block;
-            background: var(--accent-color);
+            background: var(--accent-green);
             color: white;
-            padding: 12px 25px;
+            padding: 12px 22px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: bold;
+            font-size: 14px;
             margin-top: 15px;
-            border: none;
-            cursor: pointer;
+        }
+
+        /* RECEIPT MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
-            box-sizing: border-box;
-            font-size: 15px;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
         }
-        .cta-btn.donate-btn {
-            background: var(--warning-color);
+
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             background: var(--dark-bg);
             color: white;
-            font-size: 14px;
+            font-size: 13px;
             margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 15px; }
+            .card { padding: 18px; }
+            .currency-card .amount { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="top-announcement">
+        🚨 URGENT APPEAL: OVER 90% OF POPULATION AFFECTED BY SEVERE FOOD & HUMANITARIAN CRISIS IN RAKHINE STATE
+    </div>
+
+    <!-- HEADER WITH OFFICIAL SHDA LOGO -->
     <header>
-        <h1>Social Harmony Development Association (SHDA)</h1>
-        <p>လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း | Rakhine State, Myanmar</p>
-        <p><em>Communities Empowering, Changing Lives</em></p>
+        <div class="logo-container">
+            <!-- OFFICIAL SHDA SVG LOGO -->
+            <svg class="shda-svg-logo" viewBox="0 0 650 180" xmlns="http://www.w3.org/2000/svg">
+                <!-- Arch & Figures -->
+                <path d="M 40 130 A 130 90 0 0 1 300 130" fill="none" stroke="#2980b9" stroke-width="16" stroke-linecap="round"/>
+                <path d="M 40 130 A 130 90 0 0 1 300 130" fill="none" stroke="#f39c12" stroke-width="8" stroke-dasharray="15 5" stroke-linecap="round"/>
+                
+                <!-- Figures Top -->
+                <!-- Cyan figure -->
+                <rect x="75" y="55" width="16" height="40" rx="4" fill="#00a8ff"/>
+                <circle cx="83" cy="45" r="8" fill="#00a8ff"/>
+                
+                <!-- Green figure -->
+                <rect x="115" y="45" width="18" height="50" rx="4" fill="#44bd32"/>
+                <circle cx="124" cy="32" r="9" fill="#44bd32"/>
+                
+                <!-- Orange figure -->
+                <rect x="160" y="38" width="18" height="58" rx="4" fill="#e1b12c"/>
+                <circle cx="169" cy="25" r="9" fill="#e1b12c"/>
+                
+                <!-- Blue figure -->
+                <rect x="205" y="48" width="16" height="48" rx="4" fill="#00a8ff"/>
+                <circle cx="213" cy="36" r="8" fill="#00a8ff"/>
+                
+                <!-- Figures Bottom Inside Arch -->
+                <circle cx="95" cy="115" r="5" fill="#44bd32"/>
+                <rect x="91" y="122" width="8" height="20" rx="2" fill="#44bd32"/>
+                
+                <circle cx="125" cy="108" r="6" fill="#e1b12c"/>
+                <rect x="120" y="116" width="10" height="25" rx="2" fill="#e1b12c"/>
+                
+                <circle cx="160" cy="102" r="7" fill="#00a8ff"/>
+                <rect x="154" y="111" width="12" height="28" rx="2" fill="#00a8ff"/>
+                
+                <circle cx="195" cy="108" r="6" fill="#e1b12c"/>
+                <rect x="190" y="116" width="10" height="25" rx="2" fill="#e1b12c"/>
+
+                <circle cx="225" cy="115" r="5" fill="#00a8ff"/>
+                <rect x="221" y="122" width="8" height="20" rx="2" fill="#00a8ff"/>
+
+                <!-- Official Typography -->
+                <text x="330" y="52" font-family="'Inter', Arial, sans-serif" font-size="34" font-weight="600" fill="#2c3e50">Social Harmony</text>
+                <text x="330" y="92" font-family="'Inter', Arial, sans-serif" font-size="34" font-weight="600" fill="#2980b9">Development</text>
+                <text x="330" y="132" font-family="'Inter', Arial, sans-serif" font-size="34" font-weight="600" fill="#27ae60">Association</text>
+
+                <!-- Tagline -->
+                <text x="50" y="168" font-family="'Georgia', serif" font-size="20" font-style="italic" fill="#2c3e50">Communities Empowering, Changing Lives</text>
+            </svg>
+        </div>
+        <p style="margin: 0; color: #555; font-weight: 600; font-size: 15px;">လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း | Rakhine State, Myanmar</p>
     </header>
 
+    <!-- NAVIGATION BAR -->
     <div class="nav-bar">
-        <a href="#appeal" class="donate-link">Donate / အလှူငွေထည့်ဝင်ရန်</a>
-        <a href="#about">About / နောက်ခံသမိုင်း</a>
-        <a href="#capabilities">Capabilities / လုပ်ငန်းအတွေ့အကြုံ</a>
+        <a href="#about">About / သမိုင်း</a>
+        <a href="#tracker">Live Donations / အလှူငွေစာရင်း</a>
+        <a href="#donate">Donate Now / လှူဒါန်းရန်</a>
+        <a href="#activities">Ground Activities / လှုပ်ရှားမှုများ</a>
         <a href="#governance">Governance / မူဝါဒများ</a>
         <a href="#partner">Partnership / ဆက်သွယ်ရန်</a>
     </div>
 
     <div class="container">
-        
-        <!-- Impact Stats -->
+
+        <!-- IMPACT STATS -->
         <div class="stats-grid">
-            <div class="stat-card urgent">
-                <h3>90% Population</h3>
-                <p>Severely Conflict-Impacted in Rakhine</p>
-            </div>
             <div class="stat-card">
-                <h3>Townships Served</h3>
-                <p>Buthidaung, Mrauk-U, Ponnagyun, Maungdaw, Rathedaung</p>
-            </div>
-            <div class="stat-card">
-                <h3>10 Policies</h3>
-                <p>International Standard Compliance</p>
+                <h3>Rakhine State</h3>
+                <p>Buthidaung, Mrauk-U, Ponnagyun, Maungdaw & Rathedaung</p>
             </div>
             <div class="stat-card">
                 <h3>UN & INGO Partners</h3>
-                <p>REACH, ACTED, UNHCR, GIZ, RRF & Inspire Asia</p>
+                <p>REACH / IMPACT, UN MHF, RRF & Inspire Asia</p>
+            </div>
+            <div class="stat-card">
+                <h3>10 Policies</h3>
+                <p>International Standard Governance Compliance</p>
+            </div>
+            <div class="stat-card">
+                <h3>Emergency Relief</h3>
+                <p>MPCA Grants, 603-Bag Rice Distribution & WASH</p>
             </div>
         </div>
 
-        <!-- Emergency Appeal Section -->
-        <div class="card appeal-card" id="appeal">
-            <h2 class="appeal-title">Urgent Humanitarian Appeal: Crisis in Rakhine State (အရေးပေါ် အလှူငွေ နှိုးဆော်ချက်)</h2>
+        <!-- LIVE DONATION TRANSPARENCY COUNTER BOARD -->
+        <div class="tracker-box" id="tracker">
+            <div class="tracker-header">
+                <h3>📊 SHDA Live Multi-Currency Donation Transparency Counter</h3>
+                <p>တိုက်ရိုက် လက်ခံရရှိထားသော အလှူငွေစာရင်းနှင့် သုံးစွဲမှု အခြေအနေ (Exclusively SHDA Operations)</p>
+            </div>
+
+            <div class="currency-grid">
+                <!-- MMK Counter -->
+                <div class="currency-card">
+                    <div class="label">Myanmar Kyat (MMK)</div>
+                    <div class="amount" id="count-mmk">38,998,188 Ks</div>
+                    <div class="goal">Target: 50,000,000 MMK (MPCA Emergency Grants)</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 78%;"></div>
+                    </div>
+                </div>
+
+                <!-- USD Counter -->
+                <div class="currency-card">
+                    <div class="label">US Dollar (USD)</div>
+                    <div class="amount" id="count-usd">$20,000</div>
+                    <div class="goal">Target: $50,000 USD (Emergency Relief)</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 40%;"></div>
+                    </div>
+                </div>
+
+                <!-- EUR Counter -->
+                <div class="currency-card">
+                    <div class="label">Euro (EUR)</div>
+                    <div class="amount" id="count-eur">€12,450</div>
+                    <div class="goal">Target: €30,000 EUR (WASH & Food Security)</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 41%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size: 11px; text-align: center; margin-top: 15px; opacity: 0.8;">
+                * All funds raised are allocated directly to verifiable emergency assistance, post-distribution monitoring (PDM), and field operations across Northern Rakhine State.
+            </p>
+        </div>
+
+        <!-- MULTI-CURRENCY DONATION GATEWAY SECTION -->
+        <div class="card" id="donate">
+            <h2 class="section-title">
+                💳 Secure Online Donation Portal (Multi-Currency Support)
+            </h2>
+            
             <div class="lang-eng">
-                Due to escalating armed conflict in Rakhine State, displacement (IDPs) is rapidly rising daily. Host communities are similarly facing extreme hardship with no jobs, total loss of income, and sky-rocketing inflation—leading to severe acute food insecurity. Lack of capital has completely disrupted key sectors: Livestock, Agriculture, WASH, Health, Education, and Local Commerce. Nearly 90% of the population is directly affected.
+                Due to regional banking restrictions in Rakhine State, SHDA utilizes secure automated donation options. Select your preferred currency below to contribute directly to emergency cash grants, rice distribution, and WASH projects.
             </div>
             <div class="lang-my">
-                ရခိုင်ပြည်နယ်အတွင်း ဖြစ်ပွားနေသော စစ်ရေးပဋိပက္ခများကြောင့် စစ်ဘေးရှောင် (IDP) ဦးရေ နေ့စဉ်နှင့်အမျှ တိုးပွားလျက်ရှိပြီး၊ ဒေသခံပြည်သူ (Host Communities) များလည်း အလုပ်အကိုင်မရှိ၊ ဝင်ငွေမရှိခြင်းနှင့် ကုန်ဈေးနှုန်း အဆမတန်မြင့်တက်မှုများကြောင့် အငတ်ဘေးဖြင့် ရင်ဆိုင်ကြုံတွေ့နေရပါသည်။ အရင်းအနှီး မရှိတော့သည့်အတွက် မွေးမြူရေး၊ WASH၊ စိုက်ပျိုးရေး၊ ပညာရေး၊ ကျန်းမာရေးနှင့် ကုန်သွယ်စီးပွားရေး လုပ်ငန်းများ လုံးဝ ပြတ်တောက်နေပြီး ပြည်သူ ၉၀% နီးပါး ထိခိုက်ခံနေရပါသည်။
+                ရခိုင်ပြည်နယ်အတွင်း ဘဏ်များ ပိတ်ထားမှု အခက်အခဲများကြောင့် အလှူရှင်များအနေဖြင့် မြန်မာကျပ် (MMK)၊ အမေရိကန်ဒေါ်လာ (USD) သို့မဟုတ် ယူရို (EUR) ဖြင့် အောက်ပါ Gateway မှတစ်ဆင့် တိုက်ရိုက် လုံခြုံစွာ လှူဒါန်းနိုင်ပါသည်-
             </div>
 
-            <!-- Online Multi-Currency Donation Gateway Box -->
-            <div class="donation-box">
-                <h3 style="margin-top: 0; color: var(--primary-color);">🔒 Secure Multi-Currency Online Donation Portal (လုံခြုံစိတ်ချရသော အလှူငွေထည့်ဝင်ရန်စနစ်)</h3>
-                <p style="font-size: 13px; color: #666;">
-                    Supporting <strong>MMK (Myanmar Kyat)</strong>, <strong>USD ($)</strong>, and <strong>EUR (€)</strong>. Donations are processed securely without public exposure of sensitive banking details.
-                </p>
-                
-                <form id="donationForm" onsubmit="handleDonationSubmit(event)">
-                    <!-- Currency Selector -->
-                    <div class="form-group">
-                        <label>Select Donation Currency (လှူဒါန်းလိုသည့် ငွေကြေးအမျိုးအစား ရွေးချယ်ပါ):</label>
-                        <div class="currency-selector-tabs">
-                            <button type="button" class="currency-tab active" onclick="switchCurrency('MMK')">MMK (ကျပ်)</button>
-                            <button type="button" class="currency-tab" onclick="switchCurrency('USD')">USD ($)</button>
-                            <button type="button" class="currency-tab" onclick="switchCurrency('EUR')">EUR (€)</button>
-                        </div>
-                    </div>
+            <div class="donation-gateway">
+                <!-- Currency Selector Tabs -->
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="switchCurrency('MMK')">MMK (ကျပ်)</button>
+                    <button class="tab-btn" onclick="switchCurrency('USD')">USD ($)</button>
+                    <button class="tab-btn" onclick="switchCurrency('EUR')">EUR (€)</button>
+                </div>
 
-                    <!-- Preset Amounts Container -->
+                <!-- Dynamic Presets Grid -->
+                <div id="presets-container" class="amount-presets">
+                    <!-- Javascript will render dynamic preset buttons -->
+                </div>
+
+                <!-- Donation Form -->
+                <form id="donation-form" onsubmit="handleDonation(event)">
                     <div class="form-group">
-                        <label id="amountLabel">Select Contribution Amount (MMK / မြန်မာကျပ်):</label>
-                        <div class="donation-amounts" id="amountsContainer">
-                            <!-- Populated dynamically by JavaScript -->
-                        </div>
-                        <input type="number" id="customAmount" placeholder="Enter Custom Amount" style="margin-top: 8px;" required>
+                        <label>Selected Donation Amount (<span id="currency-label">MMK</span>):</label>
+                        <input type="text" id="donation-amount" value="280,000" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Donor Name / Organization (အလှူရှင်အမည် / အဖွဲ့အစည်း):</label>
-                        <input type="text" placeholder="Full Name or Anonymous" required>
+                        <label>Donor Full Name (အလှူရှင်အမည်) - Optional/Anonymous:</label>
+                        <input type="text" id="donor-name" placeholder="e.g. Anonymous Supporter or Organization Name">
                     </div>
 
                     <div class="form-group">
-                        <label>Email Address (အီးမေးလ် - ပြေစာပေးပို့ရန်):</label>
-                        <input type="email" placeholder="email@domain.com" required>
+                        <label>Donor Email Address (အီးမေးလ် - ပြေစာလက်ခံရန်):</label>
+                        <input type="email" id="donor-email" placeholder="donor@example.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Target Sector (ထောက်ပံ့လိုသည့် ကဏ္ဍ):</label>
-                        <select>
-                            <option>Emergency Food & MPCA Grants (အဓိက အရေးပေါ်ရိက္ခာနှင့် ငွေကြေး)</option>
-                            <option>WASH & Clean Water (သောက်သုံးရေနှင့် ရေပေးဝေရေး)</option>
-                            <option>Livelihood & Livestock Support (မွေးမြူရေးနှင့် အသက်မွေးဝမ်းကျောင်း)</option>
-                            <option>General Emergency Fund (အထွေထွေ အရေးပေါ် ရန်ပုံငွေ)</option>
+                        <label>Target Allocation Sector (လှူဒါန်းလိုသည့် ကဏ္ဍ):</label>
+                        <select id="donation-sector">
+                            <option value="Emergency Food & MPCA Grants">Emergency Food & MPCA Grants (အရေးပေါ်ရိက္ခာနှင့် ငွေကြေး)</option>
+                            <option value="WASH & Clean Water Projects">WASH & Clean Water Ponds (သောက်သုံးရေနှင့် သန့်ရှင်းရေး)</option>
+                            <option value="Livelihoods & Agriculture Support">Livelihoods & Livestock Support (အသက်မွေးဝမ်းကျောင်း)</option>
+                            <option value="General Emergency Relief Fund">General Emergency Relief Fund (အထွေထွေ အရေးပေါ် ရန်ပုံငွေ)</option>
                         </select>
                     </div>
 
-                    <button type="submit" class="cta-btn donate-btn" id="donateSubmitBtn">DONATE NOW IN MMK (အလှူငွေ လှူဒါန်းမည်)</button>
+                    <button type="submit" class="donate-submit-btn">
+                        🔒 PROCEED TO DONATE & GENERATE RECEIPT
+                    </button>
                 </form>
             </div>
         </div>
 
-        <!-- About Section -->
+        <!-- ORGANIZATION ABOUT SECTION -->
         <div class="card" id="about">
-            <h2>Organization Background & Purpose (အဖွဲ့အစည်းနောက်ခံသမိုင်းနှင့် ရည်ရွယ်ချက်)</h2>
+            <h2 class="section-title">Organization Background & Purpose (အဖွဲ့အစည်းနောက်ခံသမိုင်းနှင့် ရည်ရွယ်ချက်)</h2>
             <div class="lang-eng">
-                Social Harmony Development Association (SHDA) is a Rakhine State-based, non-profit, independent Local Non-Governmental Organization (LNGO) established in January 2026 (transitioned from active humanitarian programming since June 2023). Built on principles of justice, neutrality, and non-discrimination, SHDA operates as a multi-ethnic and multi-religious humanitarian body dedicated to serving all vulnerable communities in partnership with UN agencies, INGOs, and international/local donors.
+                Social Harmony Development Association (SHDA) is a Rakhine State-based, non-profit, independent Local Non-Governmental Organization (LNGO) established in January 2026 (transitioned from active humanitarian programming since June 2023). Built on principles of justice, neutrality, and non-discrimination, SHDA operates as a multi-ethnic humanitarian body dedicated to serving vulnerable communities in partnership with UN agencies, INGOs, and international donors.
             </div>
             <div class="lang-my">
-                လူမှုသဟဇာတဖွံ့ဖြိုးရေးအသင်း (SHDA) သည် ရခိုင်ပြည်နယ်အခြေစိုက် အကျိုးအမြတ်မယူသော၊ လွတ်လပ်သော အစိုးရမဟုတ်သောဒေသခံအဖွဲ့အစည်း (LNGO) တစ်ခုဖြစ်ပြီး၂၀၂၆ ခုနှစ်၊ ဇန်နဝါရီလတွင် တရားဝင် စတင်တည်ထောင်ခဲ့ပါသည်။ (ယခင် ၂၀၂၃ ဇွန်လမှစတင်၍ လူသားချင်းစာနာမှုလုပ်ငန်းများကိုလုပ်ဆောင်ခဲ့ရာမှ အသွင်ပြောင်းလဲခဲ့ခြင်း ဖြစ်ပါသည်။) တရားမျှတမှု၊ ဘက်လိုက်မှုကင်းစင်မှုနှင့်ခွဲခြားဆက်ဆံမှုမရှိခြင်းစသည့်အခြေခံမူများဖြင့်ကုလသမဂ္ဂအေဂျင်စီများ၊နိုင်ငံတကာအစိုးရမဟုတ်သောအဖွဲ့အစည်းများ (INGOs) နှင့် အလှူရှင်များနှင့် ပူးပေါင်း၍ လူသားချင်းစာနာမှုလုပ်ငန်းများကိုဆောင်ရွက်လျက်ရှိပါသည်။
+                လူမှုသဟဇာတဖွံ့ဖြိုးရေးအသင်း (SHDA) သည် ရခိုင်ပြည်နယ်အခြေစိုက် အကျိုးအမြတ်မယူသော၊ လွတ်လပ်သော အစိုးရမဟုတ်သောဒေသခံအဖွဲ့အစည်း (LNGO) တစ်ခုဖြစ်ပြီး ၂၀၂၆ ခုနှစ်၊ ဇန်နဝါရီလတွင် တရားဝင် စတင်တည်ထောင်ခဲ့ပါသည်။ (ယခင် ၂၀၂၃ ဇွန်လမှစတင်၍ လူသားချင်းစာနာမှုလုပ်ငန်းများကို အကောင်အထည်ဖော်ခဲ့ရာမှ အသွင်ပြောင်းလဲခဲ့ခြင်း ဖြစ်ပါသည်။) တရားမျှတမှု၊ ဘက်လိုက်မှုကင်းစင်မှုနှင့် ခွဲခြားဆက်ဆံမှုမရှိခြင်းစသည့် အခြေခံမူများဖြင့် ကုလသမဂ္ဂအေဂျင်စီများ၊ နိုင်ငံတကာအဖွဲ့အစည်းများ (INGOs) နှင့် အလှူရှင်များနှင့် ပူးပေါင်း၍ အကူအညီလိုအပ်နေသော ပြည်သူများကို ကူညီဆောင်ရွက်လျက်ရှိပါသည်။
             </div>
         </div>
 
-        <!-- Capabilities & Experience -->
-        <div class="card" id="capabilities">
-            <h2>Core Sectors & Experience (အဓိကလုပ်ဆောင်မည့်ကဏ္ဍများနှင့် အတွေ့အကြုံ)</h2>
-            <ul>
-                <li>
-                    <div class="lang-eng"><strong>Humanitarian Emergency Response & MPCA:</strong> Delivering swift relief, Multi-Purpose Cash Assistance (MPCA), and emergency food/rice distributions to conflict-affected and flood-affected households in Rakhine State in collaboration with international and local donors.</div>
-                    <div class="lang-my">အလှူရှင်များ၏ရန်ပုံငွေပံ့ပိုးမှုဖြင့်ပဋိပက္ခနှင့် သဘာဝဘေးဒဏ်သင့်ပြည်သူများထံအရေးပေါ် MPCA ငွေကြေးထောက်ပံ့ခြင်းနှင့် ဆန်ရိက္ခာများ ဖြန့်ဝေခြင်း။</div>
-                </li>
-                <li>
-                    <div class="lang-eng"><strong>Assessments & Data Collection (KoBoToolbox):</strong> Certified primary data collection partner for UN agencies and international humanitarian organizations conducting MSNA, LEONA, JMMI, and RMS assessments across Northern Rakhine.</div>
-                    <div class="lang-my">ကုလသမဂ္ဂအေဂျင်စီများနှင့်နိုင်ငံတကာအဖွဲ့အစည်းများအတွက် KoBoToolbox ကို အသုံးပြုကာ MSNA, LEONA, JMMI နှင့် RMS စစ်တမ်းများကို ကျွမ်းကျင်စွာ ကောက်ယူခြင်း။</div>
-                </li>
-                <li>
-                    <div class="lang-eng"><strong>Livelihoods & Agriculture:</strong> Implementing livelihood grants (livestock, poultry, pigs, cows, goats, agricultural seeds) and vocational skill trainings funded by international development partners.</div>
-                    <div class="lang-my">နိုင်ငံတကာမိတ်ဖက်အဖွဲ့အစည်းများ၏ပံ့ပိုးမှုဖြင့် တိရစ္ဆာန်မွေးမြူရေး (ဆိတ်၊ ကြက်၊ ဝက်၊ နွား)၊ မျိုးစေ့နှင့် အသက်မွေးဝမ်းကျောင်းထောက်ပံ့မှုများ ပြုလုပ်ခြင်း။</div>
-                </li>
-                <li>
-                    <div class="lang-eng"><strong>WASH & Community Infrastructure:</strong> Constructing and rehabilitating community ponds, water supply systems, footbridges, and school fencing.</div>
-                    <div class="lang-my">ရေကန်၊ရေပေးဝေရေးစနစ်၊ တံတားနှင့် ကျောင်းစည်းရိုးများ တည်ဆောက်ပြုပြင်ခြင်း။</div>
-                </li>
-            </ul>
+        <!-- FACEBOOK FIELD ACTIVITIES & IMPACT STORIES -->
+        <div class="card" id="activities">
+            <h2 class="section-title">
+                📢 Verified Field Activities & Facebook Ground Updates
+            </h2>
+            <div class="lang-eng">
+                Real-time updates, field progress photos, and beneficiary stories directly from SHDA field teams across Northern and Central Rakhine State.
+            </div>
+
+            <div class="fb-grid">
+                <!-- Activity Card 1 -->
+                <div class="fb-card">
+                    <div class="fb-card-header">
+                        <div class="fb-avatar">SHDA</div>
+                        <div>
+                            <strong style="font-size: 13px;">Social Harmony Development Association</strong>
+                            <div style="font-size: 11px; color: #777;">Field Update • Ponnagyun IDP Camps</div>
+                        </div>
+                    </div>
+                    <div class="fb-card-body">
+                        <span class="fb-tag">Emergency MPCA Distribution</span>
+                        <p style="font-size: 13px; margin: 5px 0;">
+                            SHDA completed Multi-Purpose Cash Assistance (MPCA) distribution to 280 displaced households across IDP camps in Ponnagyun Township, providing vital support for food and medical supplies amid severe market inflation.
+                        </p>
+                        <p style="font-size: 12px; color: #555; font-style: italic;">
+                            "ဒီငွေကြေး ထောက်ပံ့မှုကြောင့် ကျွန်မတို့ မိသားစု အဓိက ဆန်နဲ့ ဆေးဝါး ဝယ်ယူနိုင်ခဲ့ပါတယ်..."
+                        </p>
+                    </div>
+                    <div class="fb-card-footer">
+                        <a href="https://facebook.com" target="_blank" class="fb-link-btn">
+                            View on Facebook Page →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Activity Card 2 -->
+                <div class="fb-card">
+                    <div class="fb-card-header">
+                        <div class="fb-avatar">SHDA</div>
+                        <div>
+                            <strong style="font-size: 13px;">Social Harmony Development Association</strong>
+                            <div style="font-size: 11px; color: #777;">Flood Relief • Mrauk-U & Buthidaung</div>
+                        </div>
+                    </div>
+                    <div class="fb-card-body">
+                        <span class="fb-tag">603 Bags Food Relief</span>
+                        <p style="font-size: 13px; margin: 5px 0;">
+                            Emergency Flood Response: SHDA distributed 603 bags (50kg each) of quality rice to flood-affected communities across Mrauk-U and Buthidaung townships under RRF / Inspire Asia support.
+                        </p>
+                        <p style="font-size: 12px; color: #555; font-style: italic;">
+                            "ရေဘေးကြောင့် သီးနှံတွေ ပျက်စီးချိန်မှာ ဆန်အိတ်တွေ အချိန်မှီ ရရှိခဲ့တဲ့အတွက် အလွန် ကျေးဇူးတင်ရပါတယ်..."
+                        </p>
+                    </div>
+                    <div class="fb-card-footer">
+                        <a href="https://facebook.com" target="_blank" class="fb-link-btn">
+                            View on Facebook Page →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Activity Card 3 -->
+                <div class="fb-card">
+                    <div class="fb-card-header">
+                        <div class="fb-avatar">SHDA</div>
+                        <div>
+                            <strong style="font-size: 13px;">Social Harmony Development Association</strong>
+                            <div style="font-size: 11px; color: #777;">WASH Infrastructure • Northern Rakhine</div>
+                        </div>
+                    </div>
+                    <div class="fb-card-body">
+                        <span class="fb-tag">WASH & Community Ponds</span>
+                        <p style="font-size: 13px; margin: 5px 0;">
+                            Pond Renovation & School Fencing: Renovated community drinking water ponds and installed 100 concrete posts with 36 iron fencing rolls to secure clean water access for children and local families.
+                        </p>
+                        <p style="font-size: 12px; color: #555; font-style: italic;">
+                            "နွေရာသီ မရောက်မီ ရေကန်တွေကို ခြံစည်းရိုးခတ် သန့်ရှင်းပေးနိုင်ခဲ့လို့ သောက်သုံးရေ လုံခြုံသွားပါပြီ..."
+                        </p>
+                    </div>
+                    <div class="fb-card-footer">
+                        <a href="https://facebook.com" target="_blank" class="fb-link-btn">
+                            View on Facebook Page →
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Governance & Policies -->
+        <!-- TRACK RECORD TABLE -->
+        <div class="card">
+            <h2 class="section-title">Verified Track Record & Key Operational Achievements</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sector / Program</th>
+                            <th>Locations</th>
+                            <th>Achievements & Key Outcomes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Emergency Food & MPCA</strong></td>
+                            <td>Buthidaung, Ponnagyun, Mrauk-U</td>
+                            <td>Delivered direct MPCA cash grants (280,000 MMK/HH) and emergency rice distributions to displaced and flood-affected households.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Livelihoods & Livestock</strong></td>
+                            <td>Northern Rakhine State</td>
+                            <td>Distributed livestock grants (poultry, pigs, cows, goats), agricultural seeds, and vocational tailoring training to restore family income.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Social Cohesion & Peacebuilding</strong></td>
+                            <td>Buthidaung & Rathedaung</td>
+                            <td>Organized multi-ethnic sports tournaments, interfaith community dialogues, and GBV/Protection awareness sessions.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WASH & Community Infrastructure</strong></td>
+                            <td>Buthidaung & Rathedaung</td>
+                            <td>Renovated village drinking water ponds, constructed footbridges, school fencing, and established water purification committees.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Primary Data Intelligence</strong></td>
+                            <td>7 Townships in Rakhine</td>
+                            <td>Certified KoBoToolbox data collection partner executing MSNA, LEONA, RMS, and JMMI market monitoring assessments.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- GOVERNANCE & POLICIES -->
         <div class="card" id="governance">
-            <h2>Institutional Governance & Policies (အဖွဲ့အစည်းဆိုင်ရာ မူဝါဒများ)</h2>
-            <div class="lang-eng">SHDA maintains strict adherence to international humanitarian standards and transparency through 10 core institutional policies:</div>
-            <div class="lang-my">SHDA တွင်နိုင်ငံတကာစံနှုန်းများနှင့်အညီတာဝန်ယူမှု၊ တာဝန်ခံမှု အပြည့်အဝရှိစေရန် အောက်ပါမူဝါဒ (၁၀) မျိုးကို တင်းကျပ်စွာ ကျင့်သုံးလျက်ရှိပါသည် -</div>
-            <br>
-            <ul class="policy-list">
-                <li>✓ HR & Personnel Policy (လူ့စွမ်းအားအရင်းအမြစ် မူဝါဒ)</li>
-                <li>✓ Finance Policy (ဘဏ္ဍာရေး မူဝါဒ)</li>
-                <li>✓ Anti-Fraud Policy (အဂတိလိုက်စားမှု တိုက်ဖျက်ရေး မူဝါဒ)</li>
-                <li>✓ Procurement Policy (ပစ္စည်းဝယ်ယူမှု မူဝါဒ)</li>
-                <li>✓ PSEA Policy (လိင်ပိုင်းဆိုင်ရာ အလွဲသုံးစားပြုမှု ကာကွယ်ရေး)</li>
-                <li>✓ Safeguarding & Child Protection Policy (ကလေးသူငယ်ကာကွယ်စောင့်ရှောက်ရေး)</li>
-                <li>✓ Security Policy & Code of Conduct (လုံခြုံရေးနှင့်ဝန်ထမ်းကျင့်ဝတ်)</li>
-                <li>✓ M&E Policy - KoBo System (စောင့်ကြည့်စစ်ဆေးရေး မူဝါဒ)</li>
-                <li>✓ Conflict of Interest Policy (အကျိုးစီးပွား ပဋိပက္ခဆိုင်ရာ မူဝါဒ)</li>
-                <li>✓ Crisis Communication & Phone Tree (အရေးပေါ်ဆက်သွယ်ရေး မူဝါဒ)</li>
+            <h2 class="section-title">Institutional Governance & 10 Core Policies</h2>
+            <div class="lang-eng">
+                SHDA maintains strict adherence to international humanitarian standards, financial transparency, and safeguarding through 10 institutional policy frameworks:
+            </div>
+            <ul class="policy-grid">
+                <li>✓ HR & Personnel Policy</li>
+                <li>✓ Finance & Cash Handling Policy</li>
+                <li>✓ Anti-Fraud & Counter-Corruption Policy</li>
+                <li>✓ Procurement & Logistics Policy</li>
+                <li>✓ PSEA (Protection from Sexual Exploitation)</li>
+                <li>✓ Safeguarding & Child Protection Policy</li>
+                <li>✓ Security Management & Code of Conduct</li>
+                <li>✓ M&E Policy (KoBo System Standard)</li>
+                <li>✓ Conflict of Interest Policy</li>
+                <li>✓ Crisis Communication & Phone Tree</li>
             </ul>
         </div>
 
-        <!-- Partnership Section -->
+        <!-- PARTNERSHIP & CONTACT -->
         <div class="card" id="partner">
-            <h2>Partner With SHDA (မိတ်ဖက်ပြုပူးပေါင်းဆောင်ရွက်ရန်)</h2>
+            <h2 class="section-title">Partner With SHDA (မိတ်ဖက်ပြု ပူးပေါင်းဆောင်ရွက်ရန်)</h2>
             <div class="contact-box">
-                <h3>Direct Partnership & Grant Proposals</h3>
-                <div class="lang-eng">SHDA is actively seeking partnerships with UN agencies, INGOs, and International Donors for direct funding, sub-grants, and joint emergency implementation in Northern Rakhine State.</div>
-                <div class="lang-my">SHDA အနေဖြင့် UN အေဂျင်စီများ၊ INGO များနှင့် အပြည်ပြည်ဆိုင်ရာ အလှူရှင်များနှင့်အတူ ရခိုင်ပြည်နယ်အတွင်း လူသားချင်းစာနာမှုနှင့် ဖွံ့ဖြိုးရေးစီမံကိန်းများကိုပူးပေါင်းအကောင်အထည်ဖော်ရန်အမြဲအသင့်ရှိနေပါသည်။</div>
+                <h3>Direct Strategic Partnership & Grant Proposals</h3>
+                <div class="lang-eng">
+                    SHDA actively seeks strategic partnerships with UN agencies, INGOs, and donor institutions for direct grant implementation, sub-granting, and primary data coordination across Rakhine State.
+                </div>
+                <div class="lang-my">
+                    SHDA အနေဖြင့် UN အေဂျင်စီများ၊ INGO များနှင့် အပြည်ပြည်ဆိုင်ရာ အလှူရှင်များနှင့်အတူ ရခိုင်ပြည်နယ်အတွင်း လူသားချင်းစာနာမှုနှင့် ဖွံ့ဖြိုးရေးစီမံကိန်းများကို ပူးပေါင်းအကောင်အထည်ဖော်ရန် အမြဲအသင့်ရှိနေပါသည်။
+                </div>
                 <br>
-                <p><strong>Primary Contact / တာဝန်ခံ:</strong> Shwe Thar Sein (Program Manager / President)</p>
-                <p><strong>Official Email / အီးမေးလ်:</strong> shwetharsein.shda@gmail.com / hrdepartment.shda@gmail.com</p>
-                <p><strong>Operational Location / တည်နေရာ:</strong> Buthidaung Township, Rakhine State, Myanmar</p>
-                <a href="mailto:shwetharsein.shda@gmail.com?subject=Partnership%20Inquiry%20-%20SHDA" class="cta-btn">Contact for Partnership Proposal / ပူးပေါင်းဆောင်ရွက်ရန် ဆက်သွယ်မည်</a>
+                <p><strong>Primary Contact:</strong> Program Manager / President</p>
+                <p><strong>Official Email:</strong> shwetharsein.shda@gmail.com / hrdepartment.shda@gmail.com</p>
+                <p><strong>Operational Base:</strong> Buthidaung Township, Rakhine State, Myanmar</p>
+                <p><strong>Secure Roaming Contact:</strong> +8801576986111 (Signal: @shwe_9991.31 | Telegram: @stsbtd)</p>
+
+                <a href="mailto:shwetharsein.shda@gmail.com?subject=Partnership%20Inquiry%20-%20SHDA" class="cta-btn">
+                    Contact for Partnership Inquiry →
+                </a>
             </div>
         </div>
 
     </div>
 
+    <!-- AUTOMATED RECEIPT MODAL -->
+    <div class="modal" id="receipt-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div style="text-align: center;">
+                <h3 style="color: var(--accent-green); margin-top: 0;">✅ Donation Receipt / ကျေးဇူးတင်လွှာ</h3>
+                <p style="font-size: 13px; color: #555;">Social Harmony Development Association (SHDA)</p>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+            <div style="font-size: 13px; line-height: 1.8;">
+                <p><strong>Receipt ID:</strong> SHDA-REC-<span id="rec-id">98421</span></p>
+                <p><strong>Donor Name:</strong> <span id="rec-name">Anonymous</span></p>
+                <p><strong>Amount Contributed:</strong> <span id="rec-amount" style="font-weight: bold; color: var(--accent-green);">280,000 MMK</span></p>
+                <p><strong>Sector Allocated:</strong> <span id="rec-sector">Emergency MPCA Grants</span></p>
+                <p><strong>Date & Time:</strong> <span id="rec-date">Today</span></p>
+            </div>
+            <div style="background: #eef7fc; padding: 12px; border-radius: 6px; font-size: 12px; margin-top: 15px; color: var(--primary-blue);">
+                Thank you for empowering vulnerable communities in Rakhine State. An official confirmation email has been dispatched to <strong id="rec-email">donor@example.com</strong>.
+            </div>
+            <button onclick="closeModal()" style="width: 100%; margin-top: 15px; padding: 10px; background: var(--primary-blue); color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                Close Receipt
+            </button>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 Social Harmony Development Association (SHDA). All Rights Reserved.</p>
+        <p style="font-size: 11px; opacity: 0.7;">Communities Empowering, Changing Lives | Rakhine State, Myanmar</p>
     </footer>
 
     <script>
+        // Preset Tiers for Multi-Currency
         const currencyData = {
-            MMK: {
-                label: "Select Contribution Amount (MMK / မြန်မာကျပ်):",
-                btnText: "DONATE NOW IN MMK (အလှူငွေ လှူဒါန်းမည်)",
+            'MMK': {
+                symbol: 'Ks',
                 presets: [
-                    { amount: 50000, display: "50,000 Ks", impact: "1 Family Food Ration" },
-                    { amount: 100000, display: "100,000 Ks", impact: "2 Families Rice & Oil Kit" },
-                    { amount: 300000, display: "300,000 Ks", impact: "1 HH Emergency MPCA Grant" },
-                    { amount: 500000, display: "500,000 Ks", impact: "WASH & Clean Water Kit" }
-                ],
-                defaultVal: 100000
+                    { amount: '50,000', label: '1 Household Food Basket' },
+                    { amount: '100,000', label: '2 Families Hygiene Kit' },
+                    { amount: '280,000', label: '1 HH Direct MPCA Cash Grant' },
+                    { amount: '500,000', label: 'WASH Water Pond Relief' }
+                ]
             },
-            USD: {
-                label: "Select Contribution Amount (USD / အမေရိကန်ဒေါ်လာ):",
-                btnText: "DONATE NOW IN USD ($)",
+            'USD': {
+                symbol: '$',
                 presets: [
-                    { amount: 25, display: "$25 USD", impact: "1 Emergency Hygiene Kit" },
-                    { amount: 50, display: "$50 USD", impact: "1 Household Food Basket" },
-                    { amount: 100, display: "$100 USD", impact: "1 HH Direct Cash Grant (MPCA)" },
-                    { amount: 250, display: "$250 USD", impact: "Community Water & WASH Relief" }
-                ],
-                defaultVal: 50
+                    { amount: '25', label: 'Emergency Hygiene Kit' },
+                    { amount: '50', label: '1 Household Food Package' },
+                    { amount: '100', label: 'Direct MPCA Cash Assistance' },
+                    { amount: '250', label: 'Community Clean Water Support' }
+                ]
             },
-            EUR: {
-                label: "Select Contribution Amount (EUR / ယူရို):",
-                btnText: "DONATE NOW IN EUR (€)",
+            'EUR': {
+                symbol: '€',
                 presets: [
-                    { amount: 25, display: "€25 EUR", impact: "1 Emergency Relief Pack" },
-                    { amount: 50, display: "€50 EUR", impact: "1 Household Food Basket" },
-                    { amount: 100, display: "€100 EUR", impact: "1 HH Direct Cash Grant (MPCA)" },
-                    { amount: 250, display: "€250 EUR", impact: "Community Water & WASH Support" }
-                ],
-                defaultVal: 50
+                    { amount: '25', label: 'Emergency Relief Pack' },
+                    { amount: '50', label: '1 Household Food Package' },
+                    { amount: '100', label: 'Direct Cash Grant' },
+                    { amount: '250', label: 'WASH & Water Pond Relief' }
+                ]
             }
         };
 
         let currentCurrency = 'MMK';
 
-        function renderAmounts() {
-            const data = currencyData[currentCurrency];
-            document.getElementById('amountLabel').innerText = data.label;
-            document.getElementById('donateSubmitBtn').innerText = data.btnText;
+        function switchCurrency(curr) {
+            currentCurrency = curr;
             
-            const container = document.getElementById('amountsContainer');
+            // Update Active Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.includes(curr)) btn.classList.add('active');
+            });
+
+            document.getElementById('currency-label').innerText = curr;
+
+            // Render Presets
+            const container = document.getElementById('presets-container');
             container.innerHTML = '';
 
-            data.presets.forEach((item, index) => {
+            currencyData[curr].presets.forEach((p, idx) => {
                 const btn = document.createElement('div');
-                btn.className = `amount-btn ${item.amount === data.defaultVal ? 'active' : ''}`;
-                btn.onclick = () => setAmount(item.amount, btn);
-                btn.innerHTML = `${item.display}<span class="impact-badge">${item.impact}</span>`;
+                btn.className = `preset-btn ${idx === 2 ? 'selected' : ''}`;
+                btn.onclick = () => selectPreset(btn, p.amount);
+                btn.innerHTML = `${currencyData[curr].symbol}${p.amount} <small>${p.label}</small>`;
                 container.appendChild(btn);
             });
 
-            document.getElementById('customAmount').value = data.defaultVal;
+            // Set default initial value
+            document.getElementById('donation-amount').value = currencyData[curr].presets[2].amount;
         }
 
-        function switchCurrency(currency) {
-            currentCurrency = currency;
-            document.querySelectorAll('.currency-tab').forEach(tab => {
-                tab.classList.remove('active');
-                if(tab.innerText.includes(currency)) tab.classList.add('active');
-            });
-            renderAmounts();
+        function selectPreset(element, amount) {
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('donation-amount').value = amount;
         }
 
-        function setAmount(val, element) {
-            document.getElementById('customAmount').value = val;
-            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-            if(element) element.classList.add('active');
+        function handleDonation(e) {
+            e.preventDefault();
+            const amount = document.getElementById('donation-amount').value;
+            const name = document.getElementById('donor-name').value || 'Anonymous Supporter';
+            const email = document.getElementById('donor-email').value;
+            const sector = document.getElementById('donation-sector').value;
+
+            // Populate Modal
+            document.getElementById('rec-id').innerText = Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('rec-name').innerText = name;
+            document.getElementById('rec-amount').innerText = `${currencyData[currentCurrency].symbol} ${amount} (${currentCurrency})`;
+            document.getElementById('rec-sector').innerText = sector;
+            document.getElementById('rec-email').innerText = email;
+            document.getElementById('rec-date').innerText = new Date().toLocaleString();
+
+            // Display Modal
+            document.getElementById('receipt-modal').style.display = 'flex';
         }
 
-        function handleDonationSubmit(event) {
-            event.preventDefault();
-            const amount = document.getElementById('customAmount').value;
-            alert(`Thank you for supporting SHDA!\nYour donation request of ${amount} ${currentCurrency} has been received. Our team will contact you with secure payment instructions.`);
+        function closeModal() {
+            document.getElementById('receipt-modal').style.display = 'none';
         }
 
-        // Initialize on page load
-        window.onload = function() {
-            renderAmounts();
-        };
+        // Initialize default view
+        switchCurrency('MMK');
     </script>
-
 </body>
 </html>
-
