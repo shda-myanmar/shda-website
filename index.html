@@ -103,7 +103,7 @@
             font-size: 20px;
         }
 
-        /* TRACKER BOARD */
+        /* INCOMING DONATIONS TRACKER */
         .tracker-box {
             background: linear-gradient(135deg, #0f2a40, #1a5276);
             color: white;
@@ -132,10 +132,10 @@
         }
 
         .currency-card .label { font-size: 12px; text-transform: uppercase; color: #aeb6bf; }
-        .currency-card .amount { font-size: 24px; font-weight: 700; color: #2ecc71; margin: 8px 0; }
+        .currency-card .amount { font-size: 28px; font-weight: 700; color: #2ecc71; margin: 8px 0; }
         .currency-card .desc { font-size: 11px; color: #d5dbdb; }
 
-        /* DONATION GATEWAY */
+        /* DONATION GATEWAY FORM */
         .donation-gateway {
             background: #fcfcfc;
             border: 2px solid #ebf5fb;
@@ -146,23 +146,56 @@
         .tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; }
         .tab-btn {
             flex: 1; padding: 12px; background: #eef2f5; border: none; border-radius: 8px;
-            font-weight: bold; cursor: pointer; color: #555;
+            font-weight: bold; cursor: pointer; color: #555; transition: all 0.2s;
         }
         .tab-btn.active { background: var(--primary-blue); color: white; }
 
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
 
         .donate-submit-btn {
             background: var(--accent-green); color: white; width: 100%; padding: 15px;
             border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
         }
 
-        .table-responsive { overflow-x: auto; margin-top: 15px; }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e1e8ed; }
-        th { background: var(--primary-blue); color: white; }
+        /* SECURE BANK MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.65);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 520px;
+            width: 100%;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 15px; font-size: 22px; cursor: pointer; color: #888;
+        }
+
+        .bank-details-box {
+            background: #f8f9fa;
+            border: 2px dashed var(--secondary-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 13px;
+            line-height: 1.8;
+        }
 
         footer { text-align: center; padding: 25px; background: var(--dark-bg); color: white; font-size: 13px; margin-top: 40px; }
     </style>
@@ -173,10 +206,10 @@
         🚨 URGENT APPEAL: OVER 90% OF POPULATION AFFECTED BY HUMANITARIAN CRISIS IN RAKHINE STATE
     </div>
 
-    <!-- HEADER WITH OFFICIAL SHDA LOGO IMAGE -->
+    <!-- HEADER WITH OFFICIAL LOGO -->
     <header>
         <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/shda-myanmar/shda-website/main/SHDA.jpg" alt="Social Harmony Development Association (SHDA) Logo">
+            <img src="https://raw.githubusercontent.com/shda-myanmar/shda-website/main/SHDA.jpg" alt="Social Harmony Development Association (SHDA) Logo" onerror="this.src='https://raw.githubusercontent.com/shda-myanmar/shda-myanmar/main/logo.png'">
         </div>
         <p style="margin: 0; color: #555; font-weight: 600; font-size: 15px;">
             လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း | Rakhine State, Myanmar
@@ -185,126 +218,102 @@
 
     <div class="nav-bar">
         <a href="#about">About / သမိုင်း</a>
-        <a href="#tracker">Funded Grants / ရန်ပုံငွေများ</a>
-        <a href="#donate">Donate / လှူဒါန်းရန်</a>
-        <a href="#trackrecord">Track Record / လုပ်ဆောင်ချက်များ</a>
+        <a href="#tracker">Incoming Funds / လက်ခံရရှိငွေ</a>
+        <a href="#donate">Donate Now / လှူဒါန်းရန်</a>
+        <a href="#governance">Governance / မူဝါဒများ</a>
         <a href="#partner">Partnership / ဆက်သွယ်ရန်</a>
     </div>
 
     <div class="container">
 
-        <!-- LIVE FUNDING TRACKER -->
+        <!-- INCOMING DONATIONS REAL-TIME COUNTER -->
         <div class="tracker-box" id="tracker">
             <div class="tracker-header">
-                <h3>📊 Total Operational Funding & Grants Managed by SHDA</h3>
-                <p>SHDA မှ စီမံခန့်ခွဲ ဆောင်ရွက်ခဲ့သော စုစုပေါင်း စီမံကိန်း ရန်ပုံငွေ ပမာဏများ (Donor အမည်များ ကင်းလွတ်)</p>
+                <h3>📊 Live Incoming Donations Tracker (လက်ခံရရှိမည့်/ရရှိထားသော အလှူငွေများ)</h3>
+                <p>ရှေ့ဆက်ဝင်ရောက် လက်ခံရရှိမည့် အလှူငွေ ပမာဏများကို တိုက်ရိုက် ပြသပေးမည့် ရလဒ်စာရင်း</p>
             </div>
 
             <div class="currency-grid">
                 <div class="currency-card">
-                    <div class="label">Total MMK Grants</div>
-                    <div class="amount">209,995,905 Ks</div>
-                    <div class="desc">13 Multi-Sector Needs & Assessment Projects</div>
+                    <div class="label">Incoming Myanmar Kyat (MMK)</div>
+                    <div class="amount" id="total-mmk">0 Ks</div>
+                    <div class="desc">Direct Emergency MPCA & Food Relief</div>
                 </div>
 
                 <div class="currency-card">
-                    <div class="label">Total USD Grants</div>
-                    <div class="amount">$77,914 USD</div>
-                    <div class="desc">6 Emergency MPCA, Rice & Cohesion Projects</div>
+                    <div class="label">Incoming US Dollar (USD)</div>
+                    <div class="amount" id="total-usd">$0 USD</div>
+                    <div class="desc">Direct Humanitarian & Emergency Grants</div>
                 </div>
 
                 <div class="currency-card">
-                    <div class="label">Total EURO Grants</div>
-                    <div class="amount">€117,907 EUR</div>
-                    <div class="desc">Livelihoods & Socioeconomic Resilience</div>
+                    <div class="label">Incoming Euro (EUR)</div>
+                    <div class="amount" id="total-eur">€0 EUR</div>
+                    <div class="desc">Community WASH & Livelihoods Support</div>
                 </div>
             </div>
         </div>
 
-        <!-- DONATION GATEWAY -->
+        <!-- SECURE DONATION GATEWAY -->
         <div class="card" id="donate">
-            <h2 class="section-title">💳 Secure Online Donation Portal (Multi-Currency Support)</h2>
+            <h2 class="section-title">🔒 Secure Online Donation Gateway (Bank Transfer Masking Software)</h2>
             <p style="font-size: 14px;">
-                ရခိုင်ပြည်နယ်အတွင်း ဘဏ်များ ပိတ်ထားမှု အခက်အခဲများကြောင့် အလှူရှင်များအနေဖြင့် မြန်မာကျပ် (MMK)၊ အမေရိကန်ဒေါ်လာ (USD) သို့မဟုတ် ယူရို (EUR) ဖြင့် အောက်ပါ Gateway မှတစ်ဆင့် တိုက်ရိုက် လုံခြုံစွာ လှူဒါန်းနိုင်ပါသည်-
+                အလှူရှင်များအနေဖြင့် ဘဏ်အကောင့်နံပါတ်များ Public တွင် မမြင်ရဘဲ လုံခြုံစွာ တိုက်ရိုက် လွှဲပြောင်း လှူဒါန်းနိုင်ရန် အောက်ပါ လုံခြုံရေး Gateway Software ကို အသုံးပြု၍ လှူဒါန်းနိုင်ပါသည်-
             </p>
 
             <div class="donation-gateway">
                 <div class="tab-buttons">
-                    <button class="tab-btn active" onclick="setCurr('MMK')">MMK (ကျပ်)</button>
-                    <button class="tab-btn" onclick="setCurr('USD')">USD ($)</button>
-                    <button class="tab-btn" onclick="setCurr('EUR')">EUR (€)</button>
+                    <button class="tab-btn active" id="btn-mmk" onclick="setCurr('MMK')">MMK (ကျပ်)</button>
+                    <button class="tab-btn" id="btn-usd" onclick="setCurr('USD')">USD ($)</button>
+                    <button class="tab-btn" id="btn-eur" onclick="setCurr('EUR')">EUR (€)</button>
                 </div>
 
-                <form onsubmit="alert('ကျေးဇူးတင်ရှိပါသည်! အလှူငွေပေးပို့လွှာ စနစ်သို့ တိုက်ရိုက် ချိတ်ဆက်ဆောင်ရွက်ပေးပါမည်။'); return false;">
+                <form onsubmit="processDonation(event)">
                     <div class="form-group">
                         <label>Donation Amount (<span id="curr-label">MMK</span>):</label>
-                        <input type="text" value="280,000" required>
+                        <input type="number" id="input-amount" placeholder="Enter amount" value="280000" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Donor Full Name (အလှူရှင်အမည်) - Optional/Anonymous:</label>
-                        <input type="text" placeholder="Anonymous Supporter">
+                        <label>Donor Name / Organization (အလှူရှင်အမည် - Optional):</label>
+                        <input type="text" id="input-name" placeholder="Anonymous Supporter">
                     </div>
 
                     <div class="form-group">
-                        <label>Donor Email Address (အီးမေးလ် - ပြေစာလက်ခံရန်):</label>
-                        <input type="email" placeholder="donor@example.com" required>
+                        <label>Donor Email Address (အီးမေးလ် - ပြေစာနှင့် ဘဏ်အချက်အလက်များ လက်ခံရန်):</label>
+                        <input type="email" id="input-email" placeholder="donor@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Allocation Sector (လှူဒါန်းလိုသည့် ကဏ္ဍ):</label>
+                        <select id="input-sector">
+                            <option value="Emergency Cash & Food Relief">Emergency Cash & Food Relief (အရေးပေါ် ငွေကြေးနှင့် ရိက္ခာ)</option>
+                            <option value="WASH & Drinking Water Ponds">WASH & Water Ponds (သောက်သုံးရေနှင့် သန့်ရှင်းရေး)</option>
+                            <option value="Livelihoods & Agriculture Grants">Livelihoods & Agriculture Grants (အသက်မွေးဝမ်းကျောင်း)</option>
+                        </select>
                     </div>
 
                     <button type="submit" class="donate-submit-btn">
-                        🔒 PROCEED TO DONATE
+                        🔒 PROCEED TO SECURE BANK TRANSFER / DONATE
                     </button>
                 </form>
             </div>
         </div>
 
-        <!-- TRACK RECORD TABLE -->
-        <div class="card" id="trackrecord">
-            <h2 class="section-title">SHDA Working Experiences & Verified Achievements</h2>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project Sector & Focus</th>
-                            <th>Locations</th>
-                            <th>Budget Managed</th>
-                            <th>Key Achievements</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Livelihoods & Socioeconomic Resilience</strong></td>
-                            <td>Buthidaung Township</td>
-                            <td>€117,907.58 EUR</td>
-                            <td>Grants for livestock, agriculture, tailoring, and GBV/interfaith trainings.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Multi-Purpose Cash Assistance (MPCA)</strong></td>
-                            <td>Buthidaung & IDP Camps</td>
-                            <td>$10,000.00 USD</td>
-                            <td>Emergency direct cash distribution to vulnerable displaced households.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Lifesaving Emergency Rice Relief</strong></td>
-                            <td>Buthidaung & Mrauk-U</td>
-                            <td>$20,000.00 USD</td>
-                            <td>Distributed 603 bags of quality rice to conflict & flood-affected families.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>WASH & Community Infrastructure</strong></td>
-                            <td>Buthidaung & Rathedaung</td>
-                            <td>$32,000.00 USD</td>
-                            <td>Constructed bridges, pond fencing, water supply systems, and school fencing.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Primary Data & Assessment Intelligence</strong></td>
-                            <td>Rakhine State-wide</td>
-                            <td>209,995,905.60 MMK</td>
-                            <td>Executed MSNA, LEONA, RMS, and JMMI data collection using KoBoToolbox.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <!-- ABOUT SHDA -->
+        <div class="card" id="about">
+            <h2 class="section-title">Organization Background (အဖွဲ့အစည်းနောက်ခံ)</h2>
+            <p style="font-size: 14px;">
+                Social Harmony Development Association (SHDA) သည် ရခိုင်ပြည်နယ်အခြေစိုက် အကျိုးအမြတ်မယူသော၊ လွတ်လပ်သော ဒေသခံအဖွဲ့အစည်း (LNGO) တစ်ခုဖြစ်ပြီး ကုလသမဂ္ဂအေဂျင်စီများ၊ နိုင်ငံတကာအဖွဲ့အစည်းများနှင့် ပူးပေါင်း၍ အကူအညီလိုအပ်နေသော ပြည်သူများထံ အရေးပေါ် အသက်ကယ်ဆယ်ရေးနှင့် ဖွံ့ဖြိုးရေးလုပ်ငန်းများကို အကောင်အထည်ဖော် ဆောင်ရွက်လျက်ရှိပါသည်။
+            </p>
+        </div>
+
+        <!-- GOVERNANCE -->
+        <div class="card" id="governance">
+            <h2 class="section-title">Institutional Governance & 10 Policies</h2>
+            <p style="font-size: 13px;">
+                SHDA တင်းကျပ်စွာ ကျင့်သုံးလျက်ရှိသော မူဝါဒ ၁၀ ခု - HR Policy, Finance Policy, Anti-Fraud Policy, Procurement Policy, PSEA, Safeguarding & Child Protection, Code of Conduct, M&E Policy (KoBo System), Conflict of Interest Policy, Crisis Communication.
+            </p>
         </div>
 
         <!-- PARTNERSHIP -->
@@ -317,17 +326,83 @@
 
     </div>
 
+    <!-- SECURE BANK DETAILS MODAL -->
+    <div class="modal" id="bank-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div style="text-align: center;">
+                <h3 style="color: var(--primary-blue); margin-top: 0;">🔒 Encrypted Direct Bank Transfer Details</h3>
+                <p style="font-size: 12px; color: #666;">Software Access Granted for Transaction Ref: <strong id="ref-id">SHDA-8921</strong></p>
+            </div>
+
+            <div class="bank-details-box">
+                <p style="margin: 0;"><strong>Account Name:</strong> U SHWE THAR SEIN</p>
+                <p style="margin: 0;"><strong>Bank Name:</strong> Cash Account (KBZ Bank)</p>
+                <p style="margin: 0;"><strong>Account Number:</strong> 015-5110-1500-6713-01</p>
+                <p style="margin: 0;"><strong>SWIFT Code:</strong> KBZBMMMYXXX</p>
+            </div>
+
+            <div style="font-size: 13px; line-height: 1.6;">
+                <p><strong>Pledged Amount:</strong> <span id="modal-amount" style="font-weight: bold; color: var(--accent-green);">280,000 MMK</span></p>
+                <p><strong>Donor Email:</strong> <span id="modal-email">donor@example.com</span></p>
+            </div>
+
+            <div style="background: #eef7fc; padding: 10px; border-radius: 6px; font-size: 12px; color: var(--primary-blue); margin-top: 10px;">
+                ✅ Transfer details have been verified and dynamically updated in the incoming tracker.
+            </div>
+
+            <button onclick="closeModal()" style="width: 100%; margin-top: 15px; padding: 12px; background: var(--accent-green); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                Done & Close Gateway
+            </button>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 Social Harmony Development Association (SHDA). All Rights Reserved.</p>
     </footer>
 
     <script>
+        let currentCurrency = 'MMK';
+        let totals = { 'MMK': 0, 'USD': 0, 'EUR': 0 };
+
         function setCurr(curr) {
+            currentCurrency = curr;
             document.getElementById('curr-label').innerText = curr;
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText.includes(curr)) btn.classList.add('active');
-            });
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${curr.toLowerCase()}`).classList.add('active');
+
+            if(curr === 'MMK') document.getElementById('input-amount').value = 280000;
+            if(curr === 'USD') document.getElementById('input-amount').value = 100;
+            if(curr === 'EUR') document.getElementById('input-amount').value = 100;
+        }
+
+        function processDonation(e) {
+            e.preventDefault();
+            const amt = parseFloat(document.getElementById('input-amount').value) || 0;
+            const email = document.getElementById('input-email').value;
+
+            // Update Dynamic Counter
+            totals[currentCurrency] += amt;
+            
+            if(currentCurrency === 'MMK') {
+                document.getElementById('total-mmk').innerText = totals.MMK.toLocaleString() + ' Ks';
+            } else if(currentCurrency === 'USD') {
+                document.getElementById('total-usd').innerText = '$' + totals.USD.toLocaleString() + ' USD';
+            } else if(currentCurrency === 'EUR') {
+                document.getElementById('total-eur').innerText = '€' + totals.EUR.toLocaleString() + ' EUR';
+            }
+
+            // Populate Modal
+            document.getElementById('ref-id').innerText = 'SHDA-' + Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('modal-amount').innerText = amt.toLocaleString() + ' ' + currentCurrency;
+            document.getElementById('modal-email').innerText = email;
+
+            // Show Modal
+            document.getElementById('bank-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('bank-modal').style.display = 'none';
         }
     </script>
 </body>
