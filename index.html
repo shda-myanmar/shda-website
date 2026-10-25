@@ -135,6 +135,49 @@
         .currency-card .amount { font-size: 28px; font-weight: 700; color: #2ecc71; margin: 8px 0; }
         .currency-card .desc { font-size: 11px; color: #d5dbdb; }
 
+        /* RECENT DONORS LOG LIST */
+        .donor-log-section {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .donor-log-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #f1c40f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .donor-log-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .donor-log-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .donor-log-item strong { color: #2ecc71; font-size: 13px; }
+        .donor-log-item .time { color: #bdc3c7; font-size: 11px; }
+
         /* DONATION GATEWAY FORM */
         .donation-gateway {
             background: #fcfcfc;
@@ -226,11 +269,11 @@
 
     <div class="container">
 
-        <!-- INCOMING DONATIONS REAL-TIME COUNTER -->
+        <!-- INCOMING DONATIONS REAL-TIME COUNTER & DONOR LOG -->
         <div class="tracker-box" id="tracker">
             <div class="tracker-header">
-                <h3>📊 Live Incoming Donations Tracker (လက်ခံရရှိမည့်/ရရှိထားသော အလှူငွေများ)</h3>
-                <p>ရှေ့ဆက်ဝင်ရောက် လက်ခံရရှိမည့် အလှူငွေ ပမာဏများကို တိုက်ရိုက် ပြသပေးမည့် ရလဒ်စာရင်း</p>
+                <h3>📊 Live Incoming Donations Tracker (လက်ခံရရှိထားသော အလှူငွေများ)</h3>
+                <p>Website မှတစ်ဆင့် တိုက်ရိုက် ဝင်ရောက်လာသော အလှူငွေ စာရင်းများကို တိုက်ရိုက် ပေါင်းစပ်ပြသပေးမည့် စနစ်</p>
             </div>
 
             <div class="currency-grid">
@@ -251,6 +294,18 @@
                     <div class="amount" id="total-eur">€0 EUR</div>
                     <div class="desc">Community WASH & Livelihoods Support</div>
                 </div>
+            </div>
+
+            <!-- LIVE RECENT DONORS ACTIVITY LOG -->
+            <div class="donor-log-section">
+                <div class="donor-log-title">
+                    📋 Recent Supporters Log (တိုက်ရိုက် လက်ခံရရှိထားသော အလှူရှင် စာရင်းမှတ်တမ်း)
+                </div>
+                <ul class="donor-log-list" id="donor-log-container">
+                    <li class="donor-log-item" style="color: #aaa; text-align: center; justify-content: center;">
+                        အသစ် လှူဒါန်းသူများ၏ စာရင်း အသေးစိတ်ကို ဤနေရာတွင် တိုက်ရိုက် ဖော်ပြပေးမည် ဖြစ်ပါသည်။
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -276,7 +331,7 @@
 
                     <div class="form-group">
                         <label>Donor Name / Organization (အလှူရှင်အမည် - Optional):</label>
-                        <input type="text" id="input-name" placeholder="Anonymous Supporter">
+                        <input type="text" id="input-name" placeholder="e.g. Anonymous Supporter or Donor Name">
                     </div>
 
                     <div class="form-group">
@@ -364,6 +419,7 @@
     <script>
         let currentCurrency = 'MMK';
         let totals = { 'MMK': 0, 'USD': 0, 'EUR': 0 };
+        let firstDonorAdded = false;
 
         function setCurr(curr) {
             currentCurrency = curr;
@@ -379,9 +435,11 @@
         function processDonation(e) {
             e.preventDefault();
             const amt = parseFloat(document.getElementById('input-amount').value) || 0;
+            const donorName = document.getElementById('input-name').value.trim() || 'Anonymous Supporter';
             const email = document.getElementById('input-email').value;
+            const sector = document.getElementById('input-sector').value;
 
-            // Update Dynamic Counter
+            // Update Dynamic Total Counters
             totals[currentCurrency] += amt;
             
             if(currentCurrency === 'MMK') {
@@ -391,6 +449,30 @@
             } else if(currentCurrency === 'EUR') {
                 document.getElementById('total-eur').innerText = '€' + totals.EUR.toLocaleString() + ' EUR';
             }
+
+            // Update Recent Supporters Log
+            const container = document.getElementById('donor-log-container');
+            if(!firstDonorAdded) {
+                container.innerHTML = '';
+                firstDonorAdded = true;
+            }
+
+            const currSymbol = currentCurrency === 'MMK' ? 'Ks' : (currentCurrency === 'USD' ? '$' : '€');
+            const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            const logLi = document.createElement('li');
+            logLi.className = 'donor-log-item';
+            logLi.innerHTML = `
+                <div>
+                    👤 <strong>${donorName}</strong> (${sector})
+                </div>
+                <div>
+                    <strong>+ ${amt.toLocaleString()} ${currSymbol}</strong>
+                    <span class="time">• ${now}</span>
+                </div>
+            `;
+
+            container.insertBefore(logLi, container.firstChild);
 
             // Populate Modal
             document.getElementById('ref-id').innerText = 'SHDA-' + Math.floor(10000 + Math.random() * 90000);
