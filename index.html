@@ -3,489 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Harmony Development Association (SHDA) - Official Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pyidaungsu:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #1a5276;
-            --secondary-blue: #2980b9;
-            --accent-green: #27ae60;
-            --dark-bg: #1c2833;
-            --light-bg: #f8f9fa;
-            --card-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            --border-radius: 12px;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', 'Pyidaungsu', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-bg);
-            color: #2c3e50;
-            line-height: 1.6;
-        }
-
-        .top-announcement {
-            background: #0f2a40;
-            color: #d5f5e3;
-            text-align: center;
-            padding: 8px 15px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        header {
-            background: white;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-align: center;
-            border-bottom: 3px solid var(--secondary-blue);
-        }
-
-        .logo-container img {
-            max-width: 480px;
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .nav-bar {
-            background: var(--primary-blue);
-            padding: 10px 15px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-
-        .nav-bar a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 14px;
-            font-weight: 600;
-            font-size: 13px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-bar a:hover {
-            background: rgba(255,255,255,0.2);
-            color: #f1c40f;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 25px auto;
-            padding: 0 15px;
-        }
-
-        .card {
-            background: white;
-            padding: 28px;
-            margin-bottom: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--card-shadow);
-            border: 1px solid #eaeaea;
-        }
-
-        h2.section-title {
-            color: var(--primary-blue);
-            border-bottom: 2px solid #eef2f5;
-            padding-bottom: 10px;
-            margin-top: 0;
-            font-size: 20px;
-        }
-
-        /* INCOMING DONATIONS TRACKER */
-        .tracker-box {
-            background: linear-gradient(135deg, #0f2a40, #1a5276);
-            color: white;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            margin-bottom: 25px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .tracker-header { text-align: center; margin-bottom: 20px; }
-        .tracker-header h3 { margin: 0; font-size: 20px; color: #f1c40f; }
-
-        .currency-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 15px;
-        }
-
-        .currency-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            padding: 18px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
-
-        .currency-card .label { font-size: 12px; text-transform: uppercase; color: #aeb6bf; }
-        .currency-card .amount { font-size: 28px; font-weight: 700; color: #2ecc71; margin: 8px 0; }
-        .currency-card .desc { font-size: 11px; color: #d5dbdb; }
-
-        /* RECENT DONORS LOG LIST */
-        .donor-log-section {
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .donor-log-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #f1c40f;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .donor-log-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .donor-log-item {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 10px 12px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            font-size: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-
-        .donor-log-item strong { color: #2ecc71; font-size: 13px; }
-        .donor-log-item .time { color: #bdc3c7; font-size: 11px; }
-
-        /* DONATION GATEWAY FORM */
-        .donation-gateway {
-            background: #fcfcfc;
-            border: 2px solid #ebf5fb;
-            padding: 22px;
-            border-radius: var(--border-radius);
-        }
-
-        .tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; }
-        .tab-btn {
-            flex: 1; padding: 12px; background: #eef2f5; border: none; border-radius: 8px;
-            font-weight: bold; cursor: pointer; color: #555; transition: all 0.2s;
-        }
-        .tab-btn.active { background: var(--primary-blue); color: white; }
-
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
-
-        .donate-submit-btn {
-            background: var(--accent-green); color: white; width: 100%; padding: 15px;
-            border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;
-            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
-        }
-
-        /* SECURE BANK MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.65);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-        }
-
-        .modal-content {
-            background: white;
-            max-width: 520px;
-            width: 100%;
-            border-radius: 12px;
-            padding: 25px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px; right: 15px; font-size: 22px; cursor: pointer; color: #888;
-        }
-
-        .bank-details-box {
-            background: #f8f9fa;
-            border: 2px dashed var(--secondary-blue);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        footer { text-align: center; padding: 25px; background: var(--dark-bg); color: white; font-size: 13px; margin-top: 40px; }
-    </style>
+    <title>လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း | Social Harmony Development Association</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <div class="top-announcement">
-        🚨 URGENT APPEAL: OVER 90% OF POPULATION AFFECTED BY HUMANITARIAN CRISIS IN RAKHINE STATE
-    </div>
-
-    <!-- HEADER WITH OFFICIAL LOGO -->
-    <header>
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/shda-myanmar/shda-website/main/SHDA.jpg" alt="Social Harmony Development Association (SHDA) Logo" onerror="this.src='https://raw.githubusercontent.com/shda-myanmar/shda-myanmar/main/logo.png'">
-        </div>
-        <p style="margin: 0; color: #555; font-weight: 600; font-size: 15px;">
-            လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း | Rakhine State, Myanmar
-        </p>
-    </header>
-
-    <div class="nav-bar">
-        <a href="#about">About / သမိုင်း</a>
-        <a href="#tracker">Incoming Funds / လက်ခံရရှိငွေ</a>
-        <a href="#donate">Donate Now / လှူဒါန်းရန်</a>
-        <a href="#governance">Governance / မူဝါဒများ</a>
-        <a href="#partner">Partnership / ဆက်သွယ်ရန်</a>
-    </div>
-
-    <div class="container">
-
-        <!-- INCOMING DONATIONS REAL-TIME COUNTER & DONOR LOG -->
-        <div class="tracker-box" id="tracker">
-            <div class="tracker-header">
-                <h3>📊 Live Incoming Donations Tracker (လက်ခံရရှိထားသော အလှူငွေများ)</h3>
-                <p>Website မှတစ်ဆင့် တိုက်ရိုက် ဝင်ရောက်လာသော အလှူငွေ စာရင်းများကို တိုက်ရိုက် ပေါင်းစပ်ပြသပေးမည့် စနစ်</p>
-            </div>
-
-            <div class="currency-grid">
-                <div class="currency-card">
-                    <div class="label">Incoming Myanmar Kyat (MMK)</div>
-                    <div class="amount" id="total-mmk">0 Ks</div>
-                    <div class="desc">Direct Emergency MPCA & Food Relief</div>
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl font-bold text-blue-900">SHDA</span>
+                    <span class="hidden md:inline text-sm text-gray-600 border-l pl-2 border-gray-300">Social Harmony Development Association</span>
                 </div>
-
-                <div class="currency-card">
-                    <div class="label">Incoming US Dollar (USD)</div>
-                    <div class="amount" id="total-usd">$0 USD</div>
-                    <div class="desc">Direct Humanitarian & Emergency Grants</div>
+                <!-- Navigation Links -->
+                <div class="hidden lg:flex space-x-6 text-sm font-medium text-gray-700">
+                    <a href="#about" class="hover:text-blue-600">About / သမိုင်း</a>
+                    <a href="#emergency-needs" class="hover:text-red-600 text-red-600 font-semibold">🚨 အရေးပေါ် လိုအပ်ချက်များ</a>
+                    <a href="#incoming-funds" class="hover:text-blue-600">Incoming Funds</a>
+                    <a href="#governance" class="hover:text-blue-600">Governance / မူဝါဒများ</a>
+                    <a href="#contact" class="hover:text-blue-600">Partnership / ဆက်သွယ်ရန်</a>
                 </div>
-
-                <div class="currency-card">
-                    <div class="label">Incoming Euro (EUR)</div>
-                    <div class="amount" id="total-eur">€0 EUR</div>
-                    <div class="desc">Community WASH & Livelihoods Support</div>
+                <!-- Primary Action Button -->
+                <div>
+                    <a href="#donate-now" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-medium text-sm shadow-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-heart"></i> Donate Now / လှူဒါန်းရန်
+                    </a>
                 </div>
-            </div>
-
-            <!-- LIVE RECENT DONORS ACTIVITY LOG -->
-            <div class="donor-log-section">
-                <div class="donor-log-title">
-                    📋 Recent Supporters Log (တိုက်ရိုက် လက်ခံရရှိထားသော အလှူရှင် စာရင်းမှတ်တမ်း)
-                </div>
-                <ul class="donor-log-list" id="donor-log-container">
-                    <li class="donor-log-item" style="color: #aaa; text-align: center; justify-content: center;">
-                        အသစ် လှူဒါန်းသူများ၏ စာရင်း အသေးစိတ်ကို ဤနေရာတွင် တိုက်ရိုက် ဖော်ပြပေးမည် ဖြစ်ပါသည်။
-                    </li>
-                </ul>
             </div>
         </div>
+    </nav>
 
-        <!-- SECURE DONATION GATEWAY -->
-        <div class="card" id="donate">
-            <h2 class="section-title">🔒 Secure Online Donation Gateway (Bank Transfer Masking Software)</h2>
-            <p style="font-size: 14px;">
-                အလှူရှင်များအနေဖြင့် ဘဏ်အကောင့်နံပါတ်များ Public တွင် မမြင်ရဘဲ လုံခြုံစွာ တိုက်ရိုက် လွှဲပြောင်း လှူဒါန်းနိုင်ရန် အောက်ပါ လုံခြုံရေး Gateway Software ကို အသုံးပြု၍ လှူဒါန်းနိုင်ပါသည်-
+    <!-- 2. HERO & DIRECT DONATION SECTION -->
+    <section id="donate-now" class="bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto text-center space-y-6">
+            <span class="bg-blue-500/30 text-blue-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Buthidaung & Mrauk-U Townships, Rakhine State</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">
+                လူမှုသဟဇာတနှင့် လူသားချင်းစာနာထောက်ထားမှု ကူညီကယ်ဆယ်ရေး
+            </h1>
+            <p class="text-blue-100 text-base sm:text-lg max-w-3xl mx-auto">
+                ရခိုင်ပြည်နယ်အတွင်း ဘေးဒဏ်သင့် အိမ်ထောင်စုများနှင့် ထိခိုက်လွယ်သော လူသိုက်အဝန်းများအတွက် အရေးပေါ် စားနပ်ရိက္ခာ၊ MPCA နှင့် ရေရှည်ဖွံ့ဖြိုးတိုးတက်ရေး လုပ်ငန်းများတွင် ပါဝင်လှူဒါန်းနိုင်ပါသည်။
             </p>
-
-            <div class="donation-gateway">
-                <div class="tab-buttons">
-                    <button class="tab-btn active" id="btn-mmk" onclick="setCurr('MMK')">MMK (ကျပ်)</button>
-                    <button class="tab-btn" id="btn-usd" onclick="setCurr('USD')">USD ($)</button>
-                    <button class="tab-btn" id="btn-eur" onclick="setCurr('EUR')">EUR (€)</button>
-                </div>
-
-                <form onsubmit="processDonation(event)">
-                    <div class="form-group">
-                        <label>Donation Amount (<span id="curr-label">MMK</span>):</label>
-                        <input type="number" id="input-amount" placeholder="Enter amount" value="280000" required>
+            
+            <!-- Quick Donation Form -->
+            <div class="bg-white text-gray-900 p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl mx-auto mt-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">တိုက်ရိုက် လှူဒါန်းရန် (Donate Now)</h3>
+                <form class="space-y-4">
+                    <div class="grid grid-cols-3 gap-2 mb-2">
+                        <button type="button" class="border-2 border-blue-600 text-blue-600 font-bold py-2 rounded-lg hover:bg-blue-50">MMK</button>
+                        <button type="button" class="border border-gray-300 font-medium py-2 rounded-lg hover:bg-gray-50">USD ($)</button>
+                        <button type="button" class="border border-gray-300 font-medium py-2 rounded-lg hover:bg-gray-50">EUR (€)</button>
                     </div>
-
-                    <div class="form-group">
-                        <label>Donor Name / Organization (အလှူရှင်အမည် - Optional):</label>
-                        <input type="text" id="input-name" placeholder="e.g. Anonymous Supporter or Donor Name">
+                    <div>
+                        <input type="number" placeholder="လှူဒါန်းလိုသော ပမာဏ ရိုက်ထည့်ပါ" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     </div>
-
-                    <div class="form-group">
-                        <label>Donor Email Address (အီးမေးလ် - ပြေစာနှင့် ဘဏ်အချက်အလက်များ လက်ခံရန်):</label>
-                        <input type="email" id="input-email" placeholder="donor@example.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Allocation Sector (လှူဒါန်းလိုသည့် ကဏ္ဍ):</label>
-                        <select id="input-sector">
-                            <option value="Emergency Cash & Food Relief">Emergency Cash & Food Relief (အရေးပေါ် ငွေကြေးနှင့် ရိက္ခာ)</option>
-                            <option value="WASH & Drinking Water Ponds">WASH & Water Ponds (သောက်သုံးရေနှင့် သန့်ရှင်းရေး)</option>
-                            <option value="Livelihoods & Agriculture Grants">Livelihoods & Agriculture Grants (အသက်မွေးဝမ်းကျောင်း)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="donate-submit-btn">
-                        🔒 PROCEED TO SECURE BANK TRANSFER / DONATE
+                    <button type="button" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg shadow transition">
+                        ယခု လှူဒါန်းမည်
                     </button>
                 </form>
             </div>
         </div>
+    </section>
 
-        <!-- ABOUT SHDA -->
-        <div class="card" id="about">
-            <h2 class="section-title">Organization Background (အဖွဲ့အစည်းနောက်ခံ)</h2>
-            <p style="font-size: 14px;">
-                Social Harmony Development Association (SHDA) သည် ရခိုင်ပြည်နယ်အခြေစိုက် အကျိုးအမြတ်မယူသော၊ လွတ်လပ်သော ဒေသခံအဖွဲ့အစည်း (LNGO) တစ်ခုဖြစ်ပြီး ကုလသမဂ္ဂအေဂျင်စီများ၊ နိုင်ငံတကာအဖွဲ့အစည်းများနှင့် ပူးပေါင်း၍ အကူအညီလိုအပ်နေသော ပြည်သူများထံ အရေးပေါ် အသက်ကယ်ဆယ်ရေးနှင့် ဖွံ့ဖြိုးရေးလုပ်ငန်းများကို အကောင်အထည်ဖော် ဆောင်ရွက်လျက်ရှိပါသည်။
+    <!-- 3. EMERGENCY OPERATIONAL NEEDS SECTION (🚨 အရေးပေါ် လိုအပ်ချက်များ) -->
+    <section id="emergency-needs" class="py-12 bg-red-50/50 border-b border-red-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Urgent Humanitarian Relief</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">🚨 အရေးပေါ် ကယ်ဆယ်ရေးနှင့် လုပ်ငန်း လိုအပ်ချက်များ</h2>
+                <p class="text-gray-600 text-sm mt-2">မြေပြင်တွင် လက်ရှိ ကူညီထောက်ပံ့ပေးရန် အရေးပေါ် လိုအပ်နေသော ကဏ္ဍများနှင့် ပရောဂျက်များ</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Emergency MPCA & Food -->
+                <div class="bg-white p-6 rounded-xl border border-red-200 shadow-sm space-y-3">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">အရေးပေါ် ငွေကြေးနှင့် စားနပ်ရိက္ခာ (MPCA & Food)</h3>
+                    <p class="text-sm text-gray-600">စစ်ဘေးနှင့် သဘာဝဘေးဒဏ်သင့် အိမ်ထောင်စုများအတွက် အိမ်ထောင်စုတစ်စုလျှင် 280,000 MMK နှုန်းဖြင့် အရေးပေါ် Multi-Purpose Cash Assistance နှင့် ဆန်/ရိက္ခာ ထောက်ပံ့ရေး။</p>
+                    <span class="inline-block text-xs font-semibold bg-red-50 text-red-700 px-2.5 py-1 rounded">Priority 1: High Urgent</span>
+                </div>
+
+                <!-- Community WASH & Health -->
+                <div class="bg-white p-6 rounded-xl border border-amber-200 shadow-sm space-y-3">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-faucet-drip"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">သန့်ရှင်းသောသောက်သုံးရေနှင့် တစ်ကိုယ်ရေသန့်ရှင်းရေး (WASH)</h3>
+                    <p class="text-sm text-gray-600">ရေဘေးသင့် ကျေးရွာများတွင် သန့်ရှင်းသော သောက်သုံးရေ ရရှိရေး၊ ရေတွင်း/ရေကန် ပြုပြင်ခြင်းနှင့် တစ်ကိုယ်ရေ သန့်ရှင်းရေးသုံး ပစ္စည်း (Hygiene Kits) ထောက်ပံ့ရေး။</p>
+                    <span class="inline-block text-xs font-semibold bg-amber-50 text-amber-700 px-2.5 py-1 rounded">Priority 2: Active Need</span>
+                </div>
+
+                <!-- Field Operations Support -->
+                <div class="bg-white p-6 rounded-xl border border-blue-200 shadow-sm space-y-3">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-tower-cell"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">မြေပြင် အကူအညီပေးရေး လုပ်ငန်းဆောင်ရွက်မှု (Field Ops)</h3>
+                    <p class="text-sm text-gray-600">လမ်းပန်းဆက်သွယ်ရေး ခက်ခဲသော စစ်ဘေးရှောင် စခန်းများသို့ သွားရောက်ရန် လောင်စာဆီ၊ Starlink ဆက်ကြောင်းနှင့် KoBoToolbox Digital Survey စနစ်များ စဉ်ဆက်မပြတ် လည်ပတ်နိုင်ရေး။</p>
+                    <span class="inline-block text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded">Operational Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. LIVE INCOMING DONATIONS TRACKER -->
+    <section id="incoming-funds" class="py-12 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-gray-900 flex items-center justify-center gap-2">
+                    📊 Live Incoming Donations Tracker
+                </h2>
+                <p class="text-gray-500 text-sm mt-1">လက်ခံရရှိထားသော အလှူငွေများ တိုက်ရိုက် ပေါင်းစပ်ပြသပေးမည့် စနစ်</p>
+            </div>
+
+            <!-- Currency Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- MMK -->
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
+                    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Incoming Myanmar Kyat (MMK)</h4>
+                    <div class="text-3xl font-extrabold text-gray-900 my-2">0 Ks</div>
+                    <p class="text-xs text-blue-600 bg-blue-50 py-1 px-2 rounded inline-block">Direct Emergency MPCA & Food Relief</p>
+                </div>
+                <!-- USD -->
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
+                    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Incoming US Dollar (USD)</h4>
+                    <div class="text-3xl font-extrabold text-gray-900 my-2">$0 USD</div>
+                    <p class="text-xs text-emerald-600 bg-emerald-50 py-1 px-2 rounded inline-block">Direct Humanitarian & Emergency Grants</p>
+                </div>
+                <!-- EUR -->
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
+                    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Incoming Euro (EUR)</h4>
+                    <div class="text-3xl font-extrabold text-gray-900 my-2">€0 EUR</div>
+                    <p class="text-xs text-purple-600 bg-purple-50 py-1 px-2 rounded inline-block">Community WASH & Livelihoods Support</p>
+                </div>
+            </div>
+
+            <!-- Supporters Log -->
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">📋 Recent Supporters Log (တိုက်ရိုက် လက်ခံရရှိထားသော အလှူရှင် စာရင်းမှတ်တမ်း)</h3>
+                <p class="text-sm text-gray-500 italic">- အသစ် လှူဒါန်းသူများ၏ စာရင်း အသေးစိတ်ကို ဤနေရာတွင် တိုက်ရိုက် ဖော်ပြပေးမည် ဖြစ်ပါသည်။</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ORGANIZATIONAL INFO & ABOUT SECTION (အဖွဲ့အစည်းဆိုင်ရာ အချက်အလက်များ) -->
+    <section id="about" class="py-12 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <h2 class="text-2xl font-bold text-gray-900 border-l-4 border-blue-900 pl-3">About / အဖွဲ့အစည်း အကြောင်း</h2>
+            
+            <p class="text-gray-700 leading-relaxed">
+                <strong>လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း (Social Harmony Development Association - SHDA)</strong> သည် ရခိုင်ပြည်နယ် မြောက်ပိုင်း (ဘူးသီးတောင်နှင့် မြောက်ဦးမြို့နယ်များ) တွင် တည်ရှိပြီး ဒေသခံ ရဟန်းရှင်လူ ပြည်သူများ၏ လူမှုစီးပွား ဘဝမြှင့်တင်ရေး၊ အရေးပေါ် ထောက်ပံ့ရေးနှင့် လူမှုသဟဇာတ ဖွံ့ဖြိုးတိုးတက်ရေး လုပ်ငန်းများကို အမှီအခိုကင်းစွာ ဆောင်ရွက်နေသော မြေပြင် ဒေသတွင်း အဖွဲ့အစည်းတစ်ခု ဖြစ်ပါသည်။
             </p>
-        </div>
 
-        <!-- GOVERNANCE -->
-        <div class="card" id="governance">
-            <h2 class="section-title">Institutional Governance & 10 Policies</h2>
-            <p style="font-size: 13px;">
-                SHDA တင်းကျပ်စွာ ကျင့်သုံးလျက်ရှိသော မူဝါဒ ၁၀ ခု - HR Policy, Finance Policy, Anti-Fraud Policy, Procurement Policy, PSEA, Safeguarding & Child Protection, Code of Conduct, M&E Policy (KoBo System), Conflict of Interest Policy, Crisis Communication.
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <h4 class="font-bold text-blue-900 mb-2"><i class="fa-solid fa-bullseye text-blue-600 mr-2"></i>မျှော်မှန်းချက်နှင့် မစ်ရှင် (Mission)</h4>
+                    <p class="text-sm text-gray-600">ထိခိုက်လွယ်သော အသိုက်အဝန်းများတွင် လူမှုသဟဇာတ ဖြစ်ရေး၊ အရေးပေါ် ဘေးအန္တရာယ်ဆိုင်ရာ ကူညီကယ်ဆယ်ရေးနှင့် စေတနာ့ဝန်ထမ်း ပူးပေါင်းဆောင်ရွက်မှုများမှတစ်ဆင့် ရေရှည်တည်တံ့သော ဖွံ့ဖြိုးတိုးတက်မှု တည်ဆောက်ရန်။</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <h4 class="font-bold text-blue-900 mb-2"><i class="fa-solid fa-list-check text-blue-600 mr-2"></i>အဓိက ဆောင်ရွက်လျက်ရှိသော လုပ်ငန်းများ</h4>
+                    <ul class="text-sm text-gray-600 list-disc list-inside space-y-1">
+                        <li>Emergency Multi-Purpose Cash Assistance (MPCA)</li>
+                        <li>အရေးပေါ် စားနပ်ရိက္ခာနှင့် ဆန် ထောက်ပံ့ရေး</li>
+                        <li>ကျေးလက်ဒေသ သောက်သုံးရေနှင့် WASH သင်တန်းများ</li>
+                        <li>REACH International နှင့် ပူးပေါင်း၍ MSNA / JMMI စာရင်းကောက်ယူရေး</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. GOVERNANCE & POLICIES SECTION -->
+    <section id="governance" class="py-12 bg-white border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900 border-l-4 border-emerald-600 pl-3">Governance / မူဝါဒများနှင့် ပွင့်လင်းမြင်သာမှု</h2>
+            <p class="text-gray-700 leading-relaxed text-sm">
+                SHDA သည် အလှူရှင်များနှင့် မိတ်ဖက်အဖွဲ့အစည်းများ၏ ယုံကြည်စိတ်ချရမှုအတွက် ဘဏ္ဍာရေး ပွင့်လင်းမြင်သာမှု (Financial Transparency)၊ လူသားချင်းစာနာမှု မူဝါဒများ (Humanitarian Principles) နှင့် တာဝန်ယူမှု၊ တာဝန်ခံမှုအပြည့်ဖြင့် အုပ်ချုပ်စီမံလျက်ရှိပါသည်။
             </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-md border font-medium">Do No Harm Policy</span>
+                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-md border font-medium">PSEA Guidelines</span>
+                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-md border font-medium">Financial Accountability</span>
+                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-md border font-medium">Community Engagement</span>
+            </div>
         </div>
+    </section>
 
-        <!-- PARTNERSHIP -->
-        <div class="card" id="partner">
-            <h2 class="section-title">Partner With SHDA (မိတ်ဖက်ပြု ပူးပေါင်းဆောင်ရွက်ရန်)</h2>
-            <p><strong>Primary Contact:</strong> Program Manager / President</p>
-            <p><strong>Official Email:</strong> shwetharsein.shda@gmail.com</p>
-            <p><strong>Operational Base:</strong> Buthidaung Township, Rakhine State, Myanmar</p>
+    <!-- 7. PARTNERSHIP & CONTACT SECTION -->
+    <section id="contact" class="py-12 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <h2 class="text-2xl font-bold text-gray-900 border-l-4 border-indigo-600 pl-3">Partnership & Contact / ဆက်သွယ်ရန်</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-xl border border-gray-200">
+                <div class="space-y-3">
+                    <h3 class="text-lg font-bold text-gray-900">Social Harmony Development Association</h3>
+                    <p class="text-sm text-gray-600"><i class="fa-solid fa-location-dot text-red-500 mr-2"></i> အမှတ် (၅)ရပ်ကွက်၊ ဘူးသီးတောင်မြို့၊ ရခိုင်ပြည်နယ်။</p>
+                    <p class="text-sm text-gray-600"><i class="fa-solid fa-envelope text-blue-500 mr-2"></i> shwetharsein.shda@gmail.com</p>
+                    <p class="text-sm text-gray-600"><i class="fa-solid fa-phone text-emerald-500 mr-2"></i> +8801576986111 / Viber: +959264878807</p>
+                </div>
+                <div class="space-y-3 border-t md:border-t-0 md:border-l border-gray-200 pt-4 md:pt-0 md:pl-6">
+                    <h4 class="font-semibold text-gray-800">မိတ်ဖက် ပူးပေါင်းဆောင်ရွက်မှုများ</h4>
+                    <p class="text-xs text-gray-500">အဖွဲ့အစည်းများနှင့် အရေးပေါ် ထောက်ပံ့ရေး ပရောဂျက်များ ပူးပေါင်းဆောင်ရွက်လိုပါက တိုက်ရိုက် ဆက်သွယ်နိုင်ပါသည်။</p>
+                    <a href="mailto:shwetharsein.shda@gmail.com" class="inline-block bg-blue-900 hover:bg-blue-800 text-white text-xs font-semibold px-4 py-2 rounded shadow">
+                        ဆက်သွယ်ရန် အီးမေးလ် ပို့မည်
+                    </a>
+                </div>
+            </div>
         </div>
+    </section>
 
-    </div>
-
-    <!-- SECURE BANK DETAILS MODAL -->
-    <div class="modal" id="bank-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div style="text-align: center;">
-                <h3 style="color: var(--primary-blue); margin-top: 0;">🔒 Encrypted Direct Bank Transfer Details</h3>
-                <p style="font-size: 12px; color: #666;">Software Access Granted for Transaction Ref: <strong id="ref-id">SHDA-8921</strong></p>
-            </div>
-
-            <div class="bank-details-box">
-                <p style="margin: 0;"><strong>Account Name:</strong> U SHWE THAR SEIN</p>
-                <p style="margin: 0;"><strong>Bank Name:</strong> Cash Account (KBZ Bank)</p>
-                <p style="margin: 0;"><strong>Account Number:</strong> 015-5110-1500-6713-01</p>
-                <p style="margin: 0;"><strong>SWIFT Code:</strong> KBZBMMMYXXX</p>
-            </div>
-
-            <div style="font-size: 13px; line-height: 1.6;">
-                <p><strong>Pledged Amount:</strong> <span id="modal-amount" style="font-weight: bold; color: var(--accent-green);">280,000 MMK</span></p>
-                <p><strong>Donor Email:</strong> <span id="modal-email">donor@example.com</span></p>
-            </div>
-
-            <div style="background: #eef7fc; padding: 10px; border-radius: 6px; font-size: 12px; color: var(--primary-blue); margin-top: 10px;">
-                ✅ Transfer details have been verified and dynamically updated in the incoming tracker.
-            </div>
-
-            <button onclick="closeModal()" style="width: 100%; margin-top: 15px; padding: 12px; background: var(--accent-green); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
-                Done & Close Gateway
-            </button>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Social Harmony Development Association (SHDA). All Rights Reserved.</p>
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm border-t border-gray-800">
+        <p>© 2026 Social Harmony Development Association (SHDA). All rights reserved.</p>
     </footer>
 
-    <script>
-        let currentCurrency = 'MMK';
-        let totals = { 'MMK': 0, 'USD': 0, 'EUR': 0 };
-        let firstDonorAdded = false;
-
-        function setCurr(curr) {
-            currentCurrency = curr;
-            document.getElementById('curr-label').innerText = curr;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-${curr.toLowerCase()}`).classList.add('active');
-
-            if(curr === 'MMK') document.getElementById('input-amount').value = 280000;
-            if(curr === 'USD') document.getElementById('input-amount').value = 100;
-            if(curr === 'EUR') document.getElementById('input-amount').value = 100;
-        }
-
-        function processDonation(e) {
-            e.preventDefault();
-            const amt = parseFloat(document.getElementById('input-amount').value) || 0;
-            const donorName = document.getElementById('input-name').value.trim() || 'Anonymous Supporter';
-            const email = document.getElementById('input-email').value;
-            const sector = document.getElementById('input-sector').value;
-
-            // Update Dynamic Total Counters
-            totals[currentCurrency] += amt;
-            
-            if(currentCurrency === 'MMK') {
-                document.getElementById('total-mmk').innerText = totals.MMK.toLocaleString() + ' Ks';
-            } else if(currentCurrency === 'USD') {
-                document.getElementById('total-usd').innerText = '$' + totals.USD.toLocaleString() + ' USD';
-            } else if(currentCurrency === 'EUR') {
-                document.getElementById('total-eur').innerText = '€' + totals.EUR.toLocaleString() + ' EUR';
-            }
-
-            // Update Recent Supporters Log
-            const container = document.getElementById('donor-log-container');
-            if(!firstDonorAdded) {
-                container.innerHTML = '';
-                firstDonorAdded = true;
-            }
-
-            const currSymbol = currentCurrency === 'MMK' ? 'Ks' : (currentCurrency === 'USD' ? '$' : '€');
-            const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-            const logLi = document.createElement('li');
-            logLi.className = 'donor-log-item';
-            logLi.innerHTML = `
-                <div>
-                    👤 <strong>${donorName}</strong> (${sector})
-                </div>
-                <div>
-                    <strong>+ ${amt.toLocaleString()} ${currSymbol}</strong>
-                    <span class="time">• ${now}</span>
-                </div>
-            `;
-
-            container.insertBefore(logLi, container.firstChild);
-
-            // Populate Modal
-            document.getElementById('ref-id').innerText = 'SHDA-' + Math.floor(10000 + Math.random() * 90000);
-            document.getElementById('modal-amount').innerText = amt.toLocaleString() + ' ' + currentCurrency;
-            document.getElementById('modal-email').innerText = email;
-
-            // Show Modal
-            document.getElementById('bank-modal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('bank-modal').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
