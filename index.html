@@ -3,222 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း | Social Harmony Development Association</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Social Harmony Development Association (SHDA)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header-banner {
+            background-color: #004d40;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .section-title {
+            color: #004d40;
+            border-bottom: 2px solid #004d40;
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+        .news-box {
+            background: #f4f6f8;
+            border-left: 5px solid #0288d1;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #004d40;
+            color: white;
+        }
+        .tracker-grid {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .tracker-card {
+            flex: 1;
+            background: #e0f2f1;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .tracker-card h4 {
+            margin: 5px 0;
+            color: #004d40;
+        }
+        .contact-box {
+            background: #26a69a;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .btn-contact {
+            display: inline-block;
+            background: #ffffff;
+            color: #004d40;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .lang-en {
+            color: #555;
+            font-size: 0.95em;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body>
 
-    <!-- 1. NAVIGATION BAR -->
-    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center space-x-2">
-                    <span class="text-xl font-bold text-blue-900">SHDA</span>
-                    <span class="hidden md:inline text-sm text-gray-600 border-l pl-2 border-gray-300">Social Harmony Development Association</span>
-                </div>
-                <!-- Navigation Links -->
-                <div class="hidden lg:flex space-x-6 text-sm font-medium text-gray-700">
-                    <a href="#about" class="hover:text-blue-600">About / သမိုင်း</a>
-                    <a href="#emergency-needs" class="hover:text-red-600 text-red-600 font-semibold">🚨 အရေးပေါ် လိုအပ်ချက်များ</a>
-                    <a href="#incoming-funds" class="hover:text-blue-600">Incoming Funds</a>
-                    <a href="#governance" class="hover:text-blue-600">Governance / မူဝါဒများ</a>
-                    <a href="#contact" class="hover:text-blue-600">Partnership / ဆက်သွယ်ရန်</a>
-                </div>
-                <!-- Primary Action Button -->
-                <div>
-                    <a href="#donate-now" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-medium text-sm shadow-md transition flex items-center gap-2">
-                        <i class="fa-solid fa-heart"></i> Donate Now / လှူဒါန်းရန်
-                    </a>
-                </div>
-            </div>
+    <!-- 1. Header Banner -->
+    <header class="header-banner">
+        <h1>လူမှုသဟဇာတနှင့် လူသားချင်းစာနာထောက်ထားမှု ကူညီကယ်ဆယ်ရေး</h1>
+        <p class="lang-en">Social Harmony & Humanitarian Relief</p>
+        <p>လူမှုသဟဇာတ ဖွံ့ဖြိုးတိုးတက်ရေးအသင်း (SHDA) သည် ရခိုင်ပြည်နယ်အတွင်း ဘေးဒဏ်သင့် အိမ်ထောင်စုများနှင့် ထိခိုက်လွယ်သော လူသိုက်အဝန်းများအတွက် အရေးပေါ် စားနပ်ရိက္ခာ၊ MPCA၊ WASH နှင့် ရေရှည်ဖွံ့ဖြိုးတိုးတက်ရေး လုပ်ငန်းများကို အမှီအခိုကင်းစွာ ဆောင်ရွက်နေသော မြေပြင် အဖွဲ့အစည်းတစ်ခု ဖြစ်ပါသည်။</p>
+        <p class="lang-en" style="color: #e0f2f1;">Social Harmony Development Association (SHDA) is a local humanitarian organization supporting disaster-affected households and vulnerable communities in Rakhine State through emergency relief, MPCA, WASH, and sustainable development initiatives.</p>
+    </header>
+
+    <!-- 2. Latest News & Field Updates -->
+    <section>
+        <h2 class="section-title">📰 SHDA ၏ မြေပြင်သတင်းများနှင့် လုပ်ဆောင်ချက်များ (Latest News & Field Updates)</h2>
+        <div class="news-box">
+            <h4>အရေးပေါ် တုံ့ပြန်ဆောင်ရွက်မှုများ (Emergency Relief Operations)</h4>
+            <p>ဘူးသီးတောင်နှင့် မြောက်ဦးမြို့နယ်များရှိ ဘေးဒဏ်သင့် အိမ်ထောင်စုပေါင်း (၉၀၀) ကျော်အတွက် MPCA ငွေကြေးထောက်ပံ့မှုနှင့် အရေးပေါ် ဆန်/ရိက္ခာ ထောက်ပံ့ပေးနိုင်ခဲ့ပြီး ဖြစ်ပါသည်။</p>
+            <p class="lang-en">SHDA has successfully reached over 900 disaster-affected households across Buthidaung and Mrauk-U townships with Multi-Purpose Cash Assistance (MPCA) and emergency food distributions.</p>
         </div>
-    </nav>
-
-    <!-- 2. HERO & DIRECT DONATION SECTION -->
-    <section id="donate-now" class="bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-5xl mx-auto text-center space-y-6">
-            <span class="bg-blue-500/30 text-blue-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Buthidaung & Mrauk-U Townships, Rakhine State</span>
-            <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">
-                လူမှုသဟဇာတနှင့် လူသားချင်းစာနာထောက်ထားမှု ကူညီကယ်ဆယ်ရေး
-            </h1>
-            <p class="text-blue-100 text-base sm:text-lg max-w-3xl mx-auto">
-                ရခိုင်ပြည်နယ်အတွင်း ဘေးဒဏ်သင့် အိမ်ထောင်စုများနှင့် ထိခိုက်လွယ်သော လူသိုက်အဝန်းများအတွက် အရေးပေါ် စားနပ်ရိက္ခာ၊ MPCA နှင့် ရေရှည်ဖွံ့ဖြိုးတိုးတက်ရေး လုပ်ငန်းများတွင် ပါဝင်လှူဒါန်းနိုင်ပါသည်။
-            </p>
-            
-            <!-- Quick Donation Form -->
-            <div class="bg-white text-gray-900 p-6 sm:p-8 rounded-2xl shadow-2xl max-w-xl mx-auto mt-8">
-                <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">တိုက်ရိုက် လှူဒါန်းရန် (Donate Now)</h3>
-                <form class="space-y-4">
-                    <div class="grid grid-cols-3 gap-2 mb-2">
-                        <button type="button" class="border-2 border-blue-600 text-blue-600 font-bold py-2 rounded-lg hover:bg-blue-50">MMK</button>
-                        <button type="button" class="border border-gray-300 font-medium py-2 rounded-lg hover:bg-gray-50">USD ($)</button>
-                        <button type="button" class="border border-gray-300 font-medium py-2 rounded-lg hover:bg-gray-50">EUR (€)</button>
-                    </div>
-                    <div>
-                        <input type="number" placeholder="လှူဒါန်းလိုသော ပမာဏ ရိုက်ထည့်ပါ" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
-                    <button type="button" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg shadow transition">
-                        ယခု လှူဒါန်းမည်
-                    </button>
-                </form>
-            </div>
+        <div class="news-box">
+            <h4>ဒေသတွင်း ဈေးကွက်နှင့် လိုအပ်ချက် စာရင်းကောက်ယူခြင်း (Assessments & Market Monitoring)</h4>
+            <p>REACH International နှင့် ပူးပေါင်း၍ ဘူးသီးတောင်၊ မောင်တောနှင့် ရသေ့တောင်မြို့နယ်များတွင် Joint Market Monitoring Initiative (JMMI) နှင့် MSNA စာရင်းကောက်ယူမှုများကို အကောင်အထည်ဖော်လျက်ရှိပါသည်။</p>
+            <p class="lang-en">In technical partnership with REACH International, SHDA conducts field data collection for JMMI and MSNA assessments across Buthidaung, Maungdaw, and Rathedaung townships.</p>
+        </div>
+        <div class="news-box">
+            <h4>နည်းပညာစနစ် ပံ့ပိုးမှု (Digital Field Operations)</h4>
+            <p>လမ်းပန်းဆက်သွယ်ရေး ခက်ခဲသော စစ်ဘေးရှောင်စခန်းများတွင် သတင်းအချက်အလက် တိကျစွာ ရရှိရန် KoBoToolbox Digital Survey စနစ်နှင့် Starlink ဆက်ကြောင်းများကို အသုံးပြု၍ ဆောင်ရွက်လျက်ရှိပါသည်။</p>
+            <p class="lang-en">Utilizing Starlink internet connectivity and KoBoToolbox digital survey systems, our teams maintain continuous remote data collection in hard-to-reach areas.</p>
         </div>
     </section>
 
-    <!-- 3. EMERGENCY OPERATIONAL NEEDS SECTION (🚨 အရေးပေါ် လိုအပ်ချက်များ) -->
-    <section id="emergency-needs" class="py-12 bg-red-50/50 border-b border-red-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Urgent Humanitarian Relief</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">🚨 အရေးပေါ် ကယ်ဆယ်ရေးနှင့် လုပ်ငန်း လိုအပ်ချက်များ</h2>
-                <p class="text-gray-600 text-sm mt-2">မြေပြင်တွင် လက်ရှိ ကူညီထောက်ပံ့ပေးရန် အရေးပေါ် လိုအပ်နေသော ကဏ္ဍများနှင့် ပရောဂျက်များ</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Emergency MPCA & Food -->
-                <div class="bg-white p-6 rounded-xl border border-red-200 shadow-sm space-y-3">
-                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl font-bold">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900">အရေးပေါ် ငွေကြေးနှင့် စားနပ်ရိက္ခာ (MPCA & Food)</h3>
-                    <p class="text-sm text-gray-600">စစ်ဘေးနှင့် သဘာဝဘေးဒဏ်သင့် အိမ်ထောင်စုများအတွက် အိမ်ထောင်စုတစ်စုလျှင် 280,000 MMK နှုန်းဖြင့် အရေးပေါ် Multi-Purpose Cash Assistance နှင့် ဆန်/ရိက္ခာ ထောက်ပံ့ရေး။</p>
-                    <span class="inline-block text-xs font-semibold bg-red-50 text-red-700 px-2.5 py-1 rounded">Priority 1: High Urgent</span>
-                </div>
-
-                <!-- Community WASH & Health -->
-                <div class="bg-white p-6 rounded-xl border border-amber-200 shadow-sm space-y-3">
-                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-xl font-bold">
-                        <i class="fa-solid fa-faucet-drip"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900">သန့်ရှင်းသောသောက်သုံးရေနှင့် တစ်ကိုယ်ရေသန့်ရှင်းရေး (WASH)</h3>
-                    <p class="text-sm text-gray-600">ရေဘေးသင့် ကျေးရွာများတွင် သန့်ရှင်းသော သောက်သုံးရေ ရရှိရေး၊ ရေတွင်း/ရေကန် ပြုပြင်ခြင်းနှင့် တစ်ကိုယ်ရေ သန့်ရှင်းရေးသုံး ပစ္စည်း (Hygiene Kits) ထောက်ပံ့ရေး။</p>
-                    <span class="inline-block text-xs font-semibold bg-amber-50 text-amber-700 px-2.5 py-1 rounded">Priority 2: Active Need</span>
-                </div>
-
-                <!-- Field Operations Support -->
-                <div class="bg-white p-6 rounded-xl border border-blue-200 shadow-sm space-y-3">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl font-bold">
-                        <i class="fa-solid fa-tower-cell"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900">မြေပြင် အကူအညီပေးရေး လုပ်ငန်းဆောင်ရွက်မှု (Field Ops)</h3>
-                    <p class="text-sm text-gray-600">လမ်းပန်းဆက်သွယ်ရေး ခက်ခဲသော စစ်ဘေးရှောင် စခန်းများသို့ သွားရောက်ရန် လောင်စာဆီ၊ Starlink ဆက်ကြောင်းနှင့် KoBoToolbox Digital Survey စနစ်များ စဉ်ဆက်မပြတ် လည်ပတ်နိုင်ရေး။</p>
-                    <span class="inline-block text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded">Operational Support</span>
-                </div>
-            </div>
-        </div>
+    <!-- 3. Priorities Table -->
+    <section>
+        <h2 class="section-title">🚨 အရေးပေါ် ကူညီထောက်ပံ့ရေး ကဏ္ဍများ (Priority Focus Areas)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ကဏ္ဍ (Sector)</th>
+                    <th>လုပ်ငန်းအသေးစိတ် (Program Details)</th>
+                    <th>ဦးစားပေးအဆင့် (Priority)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>MPCA & Food Security</strong></td>
+                    <td>စစ်ဘေးနှင့် သဘာဝဘေးဒဏ်သင့် အိမ်ထောင်စုများအတွက် 280,000 MMK နှုန်းဖြင့် MPCA နှင့် ဆန်/ရိက္ခာ ထောက်ပံ့ရေး။<br><span class="lang-en">Emergency Multi-Purpose Cash Assistance and food support.</span></td>
+                    <td><span style="color: red; font-weight: bold;">Priority 1: High Urgent</span></td>
+                </tr>
+                <tr>
+                    <td><strong>WASH & Sanitation</strong></td>
+                    <td>ရေဘေးသင့် ကျေးရွာများတွင် သန့်ရှင်းသော သောက်သုံးရေ ရရှိရေး၊ ရေတွင်း/ရေကန် ပြုပြင်ခြင်းနှင့် Hygiene Kits ထောက်ပံ့ရေး။<br><span class="lang-en">Clean water supply, pond renovations, and hygiene kits.</span></td>
+                    <td><span style="color: orange; font-weight: bold;">Priority 2: Active Need</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Field Logistics & Ops</strong></td>
+                    <td>စစ်ဘေးရှောင်စခန်းများသို့ သွားရောက်ရန် လောင်စာဆီ၊ Starlink ဆက်ကြောင်းနှင့် KoBoToolbox စနစ်များ လည်ပတ်နိုင်ရေး။<br><span class="lang-en">Fuel logistics, Starlink internet, and field survey operations.</span></td>
+                    <td><span style="color: green; font-weight: bold;">Operational Support</span></td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
-    <!-- 4. LIVE INCOMING DONATIONS TRACKER -->
-    <section id="incoming-funds" class="py-12 bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold text-gray-900 flex items-center justify-center gap-2">
-                    📊 Live Incoming Donations Tracker
-                </h2>
-                <p class="text-gray-500 text-sm mt-1">လက်ခံရရှိထားသော အလှူငွေများ တိုက်ရိုက် ပေါင်းစပ်ပြသပေးမည့် စနစ်</p>
+    <!-- 4. Transparency Tracker -->
+    <section>
+        <h2 class="section-title">📊 ဘဏ္ဍာရေး ပွင့်လင်းမြင်သာမှု စနစ် (Financial Transparency Tracker)</h2>
+        <div class="tracker-grid">
+            <div class="tracker-card">
+                <h4>Myanmar Kyat (MMK)</h4>
+                <h2>0 Ks</h2>
+                <p>Direct Emergency MPCA & Food</p>
             </div>
-
-            <!-- Currency Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- MMK -->
-                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
-                    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Incoming Myanmar Kyat (MMK)</h4>
-                    <div class="text-3xl font-extrabold text-gray-900 my-2">0 Ks</div>
-                    <p class="text-xs text-blue-600 bg-blue-50 py-1 px-2 rounded inline-block">Direct Emergency MPCA & Food Relief</p>
-                </div>
-                <!-- USD -->
-                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
-                    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Incoming US Dollar (USD)</h4>
-                    <div class="text-3xl font-extrabold text-gray-900 my-2">$0 USD</div>
-                    <p class="text-xs text-emerald-600 bg-emerald-50 py-1 px-2 rounded inline-block">Direct Humanitarian & Emergency Grants</p>
-                </div>
-                <!-- EUR -->
-                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
-                    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Incoming Euro (EUR)</h4>
-                    <div class="text-3xl font-extrabold text-gray-900 my-2">€0 EUR</div>
-                    <p class="text-xs text-purple-600 bg-purple-50 py-1 px-2 rounded inline-block">Community WASH & Livelihoods Support</p>
-                </div>
+            <div class="tracker-card">
+                <h4>US Dollar (USD)</h4>
+                <h2>$0 USD</h2>
+                <p>Humanitarian & Emergency Grants</p>
             </div>
-
-            <!-- Supporters Log -->
-            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-2">📋 Recent Supporters Log (တိုက်ရိုက် လက်ခံရရှိထားသော အလှူရှင် စာရင်းမှတ်တမ်း)</h3>
-                <p class="text-sm text-gray-500 italic">- အသစ် လှူဒါန်းသူများ၏ စာရင်း အသေးစိတ်ကို ဤနေရာတွင် တိုက်ရိုက် ဖော်ပြပေးမည် ဖြစ်ပါသည်။</p>
+            <div class="tracker-card">
+                <h4>Euro (EUR)</h4>
+                <h2>€0 EUR</h2>
+                <p>Community WASH & Livelihoods</p>
             </div>
         </div>
+        <p><strong>📋 Recent Supporters Log:</strong> အလှူရှင်များနှင့် မိတ်ဖက်အဖွဲ့အစည်းများ၏ ကူညီထောက်ပံ့မှု မှတ်တမ်းများကို ဤနေရာတွင် တိုက်ရိုက် စနစ်တကျ ရေးထွင်းဖော်ပြပေးပါမည်။</p>
     </section>
 
-    <!-- 5. ORGANIZATIONAL INFO & ABOUT SECTION (အဖွဲ့အစည်းဆိုင်ရာ အချက်အလက်များ) -->
-    <section id="about" class="py-12 bg-gray-50 border-b border-gray-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            <h2 class="text-2xl font-bold text-gray-900 border-l-4 border-blue-900 pl-3">About / အဖွဲ့အစည်း အကြောင်း</h2>
-            
-            <p class="text-gray-700 leading-relaxed">
-                <strong>လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း (Social Harmony Development Association - SHDA)</strong> သည် ရခိုင်ပြည်နယ် မြောက်ပိုင်း (ဘူးသီးတောင်နှင့် မြောက်ဦးမြို့နယ်များ) တွင် တည်ရှိပြီး ဒေသခံ ရဟန်းရှင်လူ ပြည်သူများ၏ လူမှုစီးပွား ဘဝမြှင့်တင်ရေး၊ အရေးပေါ် ထောက်ပံ့ရေးနှင့် လူမှုသဟဇာတ ဖွံ့ဖြိုးတိုးတက်ရေး လုပ်ငန်းများကို အမှီအခိုကင်းစွာ ဆောင်ရွက်နေသော မြေပြင် ဒေသတွင်း အဖွဲ့အစည်းတစ်ခု ဖြစ်ပါသည်။
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                <div class="bg-white p-5 rounded-lg border border-gray-200">
-                    <h4 class="font-bold text-blue-900 mb-2"><i class="fa-solid fa-bullseye text-blue-600 mr-2"></i>မျှော်မှန်းချက်နှင့် မစ်ရှင် (Mission)</h4>
-                    <p class="text-sm text-gray-600">ထိခိုက်လွယ်သော အသိုက်အဝန်းများတွင် လူမှုသဟဇာတ ဖြစ်ရေး၊ အရေးပေါ် ဘေးအန္တရာယ်ဆိုင်ရာ ကူညီကယ်ဆယ်ရေးနှင့် စေတနာ့ဝန်ထမ်း ပူးပေါင်းဆောင်ရွက်မှုများမှတစ်ဆင့် ရေရှည်တည်တံ့သော ဖွံ့ဖြိုးတိုးတက်မှု တည်ဆောက်ရန်။</p>
-                </div>
-                <div class="bg-white p-5 rounded-lg border border-gray-200">
-                    <h4 class="font-bold text-blue-900 mb-2"><i class="fa-solid fa-list-check text-blue-600 mr-2"></i>အဓိက ဆောင်ရွက်လျက်ရှိသော လုပ်ငန်းများ</h4>
-                    <ul class="text-sm text-gray-600 list-disc list-inside space-y-1">
-                        <li>Emergency Multi-Purpose Cash Assistance (MPCA)</li>
-                        <li>အရေးပေါ် စားနပ်ရိက္ခာနှင့် ဆန် ထောက်ပံ့ရေး</li>
-                        <li>ကျေးလက်ဒေသ သောက်သုံးရေနှင့် WASH သင်တန်းများ</li>
-                        <li>REACH International နှင့် ပူးပေါင်း၍ MSNA / JMMI စာရင်းကောက်ယူရေး</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <!-- 5. Organization Profile & Policies -->
+    <section>
+        <h2 class="section-title">About SHDA / အဖွဲ့အစည်း အကြောင်း</h2>
+        <p><strong>လူမှုသဟဇာတဖွံ့ဖြိုးတိုးတက်ရေးအသင်း (SHDA)</strong> သည် ရခိုင်ပြည်နယ် မြောက်ပိုင်း (ဘူးသီးတောင်နှင့် မြောက်ဦးမြို့နယ်များ) တွင် တည်ရှိပြီး ဒေသခံ ပြည်သူများ၏ လူမှုစီးပွား ဘဝမြှင့်တင်ရေး၊ အရေးပေါ် ထောက်ပံ့ရေးနှင့် လူမှုသဟဇာတ ဖွံ့ဖြိုးတိုးတက်ရေး လုပ်ငန်းများကို အမှီအခိုကင်းစွာ ဆောင်ရွက်နေသော မြေပြင် အဖွဲ့အစည်းတစ်ခု ဖြစ်ပါသည်။</p>
+        <p class="lang-en">Social Harmony Development Association (SHDA) is a non-governmental organization based in Northern Rakhine State, dedicated to socio-economic upliftment, emergency humanitarian response, and social harmony.</p>
+        
+        <h4>လိုက်နာကျင့်သုံးသော မူဝါဒများ (Core Policies & Standards)</h4>
+        <ul>
+            <li>Financial Transparency (ဘဏ္ဍာရေး ပွင့်လင်းမြင်သာမှု)</li>
+            <li>Humanitarian Principles (လူသားချင်းစာနာမှုဆိုင်ရာ မူဝါဒများ)</li>
+            <li>Do No Harm Policy</li>
+            <li>PSEA Guidelines</li>
+            <li>Community Engagement (လူထုပူးပေါင်းပါဝင်မှု)</li>
+        </ul>
     </section>
 
-    <!-- 6. GOVERNANCE & POLICIES SECTION -->
-    <section id="governance" class="py-12 bg-white border-b border-gray-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-            <h2 class="text-2xl font-bold text-gray-900 border-l-4 border-emerald-600 pl-3">Governance / မူဝါဒများနှင့် ပွင့်လင်းမြင်သာမှု</h2>
-            <p class="text-gray-700 leading-relaxed text-sm">
-                SHDA သည် အလှူရှင်များနှင့် မိတ်ဖက်အဖွဲ့အစည်းများ၏ ယုံကြည်စိတ်ချရမှုအတွက် ဘဏ္ဍာရေး ပွင့်လင်းမြင်သာမှု (Financial Transparency)၊ လူသားချင်းစာနာမှု မူဝါဒများ (Humanitarian Principles) နှင့် တာဝန်ယူမှု၊ တာဝန်ခံမှုအပြည့်ဖြင့် အုပ်ချုပ်စီမံလျက်ရှိပါသည်။
-            </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-md border font-medium">Do No Harm Policy</span>
-                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-md border font-medium">PSEA Guidelines</span>
-                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-md border font-medium">Financial Accountability</span>
-                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-md border font-medium">Community Engagement</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. PARTNERSHIP & CONTACT SECTION -->
-    <section id="contact" class="py-12 bg-gray-50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            <h2 class="text-2xl font-bold text-gray-900 border-l-4 border-indigo-600 pl-3">Partnership & Contact / ဆက်သွယ်ရန်</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-xl border border-gray-200">
-                <div class="space-y-3">
-                    <h3 class="text-lg font-bold text-gray-900">Social Harmony Development Association</h3>
-                    <p class="text-sm text-gray-600"><i class="fa-solid fa-location-dot text-red-500 mr-2"></i> အမှတ် (၅)ရပ်ကွက်၊ ဘူးသီးတောင်မြို့၊ ရခိုင်ပြည်နယ်။</p>
-                    <p class="text-sm text-gray-600"><i class="fa-solid fa-envelope text-blue-500 mr-2"></i> shwetharsein.shda@gmail.com</p>
-                    <p class="text-sm text-gray-600"><i class="fa-solid fa-phone text-emerald-500 mr-2"></i> +8801576986111 / Viber: +959264878807</p>
-                </div>
-                <div class="space-y-3 border-t md:border-t-0 md:border-l border-gray-200 pt-4 md:pt-0 md:pl-6">
-                    <h4 class="font-semibold text-gray-800">မိတ်ဖက် ပူးပေါင်းဆောင်ရွက်မှုများ</h4>
-                    <p class="text-xs text-gray-500">အဖွဲ့အစည်းများနှင့် အရေးပေါ် ထောက်ပံ့ရေး ပရောဂျက်များ ပူးပေါင်းဆောင်ရွက်လိုပါက တိုက်ရိုက် ဆက်သွယ်နိုင်ပါသည်။</p>
-                    <a href="mailto:shwetharsein.shda@gmail.com" class="inline-block bg-blue-900 hover:bg-blue-800 text-white text-xs font-semibold px-4 py-2 rounded shadow">
-                        ဆက်သွယ်ရန် အီးမေးလ် ပို့မည်
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm border-t border-gray-800">
-        <p>© 2026 Social Harmony Development Association (SHDA). All rights reserved.</p>
+    <!-- 6. Partnership & Contact -->
+    <footer class="contact-box">
+        <h2>Partnership & Contact / ဆက်သွယ်ရန်</h2>
+        <p><strong>Social Harmony Development Association (SHDA)</strong></p>
+        <p>📍 အမှတ် (၅) ရပ်ကွက်၊ ဘူးသီးတောင်မြို့၊ ရခိုင်ပြည်နယ်။ (Ward 5, Buthidaung Township, Rakhine State)</p>
+        <p>✉️ Email: shwetharsein.shda@gmail.com</p>
+        <p>📞 Phone / Viber: +8801576986111 / Viber: +959264878807</p>
+        <p>အဖွဲ့အစည်းများနှင့် အရေးပေါ် ထောက်ပံ့ရေး ပရောဂျက်များ ပူးပေါင်းဆောင်ရွက်လိုပါက တိုက်ရိုက် ဆက်သွယ်နိုင်ပါသည်။</p>
+        <a href="mailto:shwetharsein.shda@gmail.com" class="btn-contact">ဆက်သွယ်ရန် အီးမေးလ် ပို့မည် (Send Email)</a>
     </footer>
 
 </body>
